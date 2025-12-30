@@ -1,0 +1,6 @@
+@SkillPivotAPI_HostAddress = http://localhost:5047
+
+GET {{SkillPivotAPI_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
