@@ -216,3 +216,7 @@ D:\backend\New folder\SkillPivotAPI\bin\Debug\net10.0\zh-Hans\Microsoft.CodeAnal
 D:\backend\New folder\SkillPivotAPI\bin\Debug\net10.0\zh-Hant\Microsoft.CodeAnalysis.Workspaces.MSBuild.resources.dll
 D:\backend\New folder\SkillPivotAPI\bin\Debug\net10.0\runtimes\win\lib\net9.0\System.Windows.Extensions.dll
 D:\backend\New folder\SkillPivotAPI\obj\Debug\net10.0\SkillPivotAPI.sourcelink.json
+D:\backend\New folder\SkillPivotAPI\bin\Debug\net10.0\BCrypt.Net-Next.dll
+D:\backend\New folder\SkillPivotAPI\bin\Debug\net10.0\BouncyCastle.Cryptography.dll
+D:\backend\New folder\SkillPivotAPI\bin\Debug\net10.0\MailKit.dll
+D:\backend\New folder\SkillPivotAPI\bin\Debug\net10.0\MimeKit.dll
