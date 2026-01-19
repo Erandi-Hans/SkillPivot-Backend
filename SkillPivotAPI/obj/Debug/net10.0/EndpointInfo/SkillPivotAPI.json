@@ -131,6 +131,13 @@
         }
       },
       "User": {
+        "required": [
+          "email",
+          "password",
+          "role",
+          "firstname",
+          "lastname"
+        ],
         "type": "object",
         "properties": {
           "userId": {
@@ -149,6 +156,40 @@
           },
           "role": {
             "type": "string"
+          },
+          "firstname": {
+            "type": "string"
+          },
+          "lastname": {
+            "type": "string"
+          },
+          "verificationcode": {
+            "type": [
+              "null",
+              "string"
+            ]
+          },
+          "otpExpiry": {
+            "type": [
+              "null",
+              "string"
+            ],
+            "format": "date-time"
+          },
+          "isVerified": {
+            "type": "boolean"
+          },
+          "location": {
+            "type": [
+              "null",
+              "string"
+            ]
+          },
+          "industry": {
+            "type": [
+              "null",
+              "string"
+            ]
           }
         }
       },
