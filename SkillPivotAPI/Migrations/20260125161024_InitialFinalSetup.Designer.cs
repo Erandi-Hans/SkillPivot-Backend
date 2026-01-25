@@ -12,8 +12,8 @@ using SkillPivotAPI.Data;
 namespace SkillPivotAPI.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20260125043745_AddCompanyAndJobTables")]
-    partial class AddCompanyAndJobTables
+    [Migration("20260125161024_InitialFinalSetup")]
+    partial class InitialFinalSetup
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
