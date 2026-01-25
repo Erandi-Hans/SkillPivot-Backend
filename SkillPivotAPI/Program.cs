@@ -5,17 +5,18 @@ var builder = WebApplication.CreateBuilder(args);
 
 // --- 1. SERVICES REGISTRATION (Must be BEFORE builder.Build()) ---
 
-// Add Controllers service
+// Register controllers to handle API requests
 builder.Services.AddControllers();
 
-// Add OpenAPI (Swagger) service
-builder.Services.AddOpenApi();
+// Add support for API Explorer and Swagger Generator for documentation
+builder.Services.AddEndpointsApiExplorer();
+builder.Services.AddSwaggerGen();
 
-// Add Database Context
+// Configure the database connection using SQL Server
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 
-// Add CORS Policy for React (Vite uses port 5173)
+// Setup CORS policy for React Frontend (Vite)
 builder.Services.AddCors(options =>
 {
     options.AddPolicy("AllowReactApp",
@@ -24,31 +25,39 @@ builder.Services.AddCors(options =>
                         .AllowAnyHeader());
 });
 
-
 // --- 2. BUILD THE APP ---
 var app = builder.Build();
 
-
 // --- 3. MIDDLEWARE PIPELINE (Must be AFTER builder.Build()) ---
 
-// Configure Swagger for Development
+// Enable Swagger UI only in Development mode
 if (app.Environment.IsDevelopment())
 {
-    app.MapOpenApi();
-    app.UseSwaggerUI(options => {
-        options.SwaggerEndpoint("/openapi/v1.json", "v1");
+    // Generate the Swagger JSON document
+    app.UseSwagger();
+
+    // Enable the Swagger UI to interact with the API
+    app.UseSwaggerUI(options =>
+    {
+        // For .NET 9, this is the most stable way to load the endpoint
+        options.SwaggerEndpoint("/swagger/v1/swagger.json", "SkillPivotlk API v1");
+
+        // This makes Swagger the default page (at https://localhost:7118/)
+        options.RoutePrefix = string.Empty;
     });
 }
 
-// Enable CORS (This is very important for React connection)
-app.UseCors("AllowReactApp");
-
+// Redirect all HTTP traffic to HTTPS for security
 app.UseHttpsRedirection();
 
+// Use the CORS policy before mapping controllers
+app.UseCors("AllowReactApp");
+
+// Handle User Authorization
 app.UseAuthorization();
 
-// Map the Controllers
+// Map controller routes
 app.MapControllers();
 
-// Start the Application
+// Launch the application
 app.Run();

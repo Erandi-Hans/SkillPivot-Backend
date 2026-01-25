@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("SkillPivotAPI")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+1e726f38c94ccce2177e165ad549fe8870150dba")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+a64d129ae52646253315fd73c09aadb54b025d22")]
 [assembly: System.Reflection.AssemblyProductAttribute("SkillPivotAPI")]
 [assembly: System.Reflection.AssemblyTitleAttribute("SkillPivotAPI")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

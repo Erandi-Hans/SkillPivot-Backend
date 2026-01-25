@@ -1,6 +1,6 @@
-@SkillPivotAPI_HostAddress = http://localhost:5047
+@SkillPivotAPI_HostAddress = http://localhost:7118
 
-GET {{SkillPivotAPI_HostAddress}}/weatherforecast/
+GET {{SkillPivotAPI_HostAddress}}/AdminController/
 Accept: application/json
 
 ###

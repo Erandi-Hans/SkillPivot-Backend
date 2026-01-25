@@ -1,24 +1,15 @@
 {
-  "openapi": "3.1.1",
+  "openapi": "3.0.4",
   "info": {
-    "title": "SkillPivotAPI | v1",
-    "version": "1.0.0"
+    "title": "SkillPivotAPI",
+    "version": "1.0"
   },
-  "servers": [
-    {
-      "url": "https://localhost:7118"
-    },
-    {
-      "url": "http://localhost:5047"
-    }
-  ],
   "paths": {
-    "/WeatherForecast": {
+    "/api/Admin/users": {
       "get": {
         "tags": [
-          "WeatherForecast"
+          "Admin"
         ],
-        "operationId": "GetWeatherForecast",
         "responses": {
           "200": {
             "description": "OK",
@@ -27,7 +18,7 @@
                 "schema": {
                   "type": "array",
                   "items": {
-                    "$ref": "#/components/schemas/WeatherForecast"
+                    "$ref": "#/components/schemas/User"
                   }
                 }
               },
@@ -35,7 +26,7 @@
                 "schema": {
                   "type": "array",
                   "items": {
-                    "$ref": "#/components/schemas/WeatherForecast"
+                    "$ref": "#/components/schemas/User"
                   }
                 }
               },
@@ -43,7 +34,106 @@
                 "schema": {
                   "type": "array",
                   "items": {
-                    "$ref": "#/components/schemas/WeatherForecast"
+                    "$ref": "#/components/schemas/User"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/Admin/companies": {
+      "get": {
+        "tags": [
+          "Admin"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Company"
+                  }
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Company"
+                  }
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Company"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/Admin/verify-company/{id}": {
+      "put": {
+        "tags": [
+          "Admin"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Admin/jobs": {
+      "get": {
+        "tags": [
+          "Admin"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/JobPost"
+                  }
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/JobPost"
+                  }
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/JobPost"
                   }
                 }
               }
@@ -74,8 +164,7 @@
                 "$ref": "#/components/schemas/User"
               }
             }
-          },
-          "required": true
+          }
         },
         "responses": {
           "200": {
@@ -106,8 +195,7 @@
                 "$ref": "#/components/schemas/LoginRequest"
               }
             }
-          },
-          "required": true
+          }
         },
         "responses": {
           "200": {
@@ -119,116 +207,183 @@
   },
   "components": {
     "schemas": {
+      "Company": {
+        "required": [
+          "companyName"
+        ],
+        "type": "object",
+        "properties": {
+          "companyId": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "companyName": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "contactEmail": {
+            "type": "string",
+            "nullable": true
+          },
+          "industry": {
+            "type": "string",
+            "nullable": true
+          },
+          "website": {
+            "type": "string",
+            "nullable": true
+          },
+          "description": {
+            "type": "string",
+            "nullable": true
+          },
+          "location": {
+            "type": "string",
+            "nullable": true
+          },
+          "isVerified": {
+            "type": "boolean"
+          },
+          "registeredDate": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "jobPosts": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/JobPost"
+            },
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "JobPost": {
+        "required": [
+          "description",
+          "jobTitle"
+        ],
+        "type": "object",
+        "properties": {
+          "jobPostId": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "jobTitle": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "description": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "technologyStack": {
+            "type": "string",
+            "nullable": true
+          },
+          "jobType": {
+            "type": "string",
+            "nullable": true
+          },
+          "jobRole": {
+            "type": "string",
+            "nullable": true
+          },
+          "status": {
+            "type": "string",
+            "nullable": true
+          },
+          "postedDate": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "companyId": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "company": {
+            "$ref": "#/components/schemas/Company"
+          }
+        },
+        "additionalProperties": false
+      },
       "LoginRequest": {
         "type": "object",
         "properties": {
           "email": {
-            "type": "string"
+            "type": "string",
+            "nullable": true
           },
           "password": {
-            "type": "string"
+            "type": "string",
+            "nullable": true
           }
-        }
+        },
+        "additionalProperties": false
       },
       "User": {
         "required": [
           "email",
-          "password",
-          "role",
           "firstname",
-          "lastname"
+          "lastname",
+          "password",
+          "role"
         ],
         "type": "object",
         "properties": {
           "userId": {
-            "pattern": "^-?(?:0|[1-9]\\d*)$",
-            "type": [
-              "integer",
-              "string"
-            ],
+            "type": "integer",
             "format": "int32"
           },
           "email": {
-            "type": "string"
+            "minLength": 1,
+            "type": "string",
+            "format": "email"
           },
           "password": {
+            "minLength": 1,
             "type": "string"
           },
           "role": {
+            "minLength": 1,
             "type": "string"
           },
           "firstname": {
+            "minLength": 1,
             "type": "string"
           },
           "lastname": {
+            "minLength": 1,
             "type": "string"
           },
           "verificationcode": {
-            "type": [
-              "null",
-              "string"
-            ]
+            "type": "string",
+            "nullable": true
           },
           "otpExpiry": {
-            "type": [
-              "null",
-              "string"
-            ],
-            "format": "date-time"
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
           },
           "isVerified": {
             "type": "boolean"
           },
           "location": {
-            "type": [
-              "null",
-              "string"
-            ]
+            "type": "string",
+            "nullable": true
           },
           "industry": {
-            "type": [
-              "null",
-              "string"
-            ]
-          }
-        }
-      },
-      "WeatherForecast": {
-        "type": "object",
-        "properties": {
-          "date": {
             "type": "string",
-            "format": "date"
-          },
-          "temperatureC": {
-            "pattern": "^-?(?:0|[1-9]\\d*)$",
-            "type": [
-              "integer",
-              "string"
-            ],
-            "format": "int32"
-          },
-          "temperatureF": {
-            "pattern": "^-?(?:0|[1-9]\\d*)$",
-            "type": [
-              "integer",
-              "string"
-            ],
-            "format": "int32"
-          },
-          "summary": {
-            "type": [
-              "null",
-              "string"
-            ]
+            "nullable": true
           }
-        }
+        },
+        "additionalProperties": false
       }
     }
   },
   "tags": [
     {
-      "name": "WeatherForecast"
+      "name": "Admin"
     },
     {
       "name": "Auth"
