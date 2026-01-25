@@ -9,5 +9,7 @@ namespace SkillPivotAPI.Data
 
         
         public DbSet<User> Users { get; set; }
+        public DbSet<Company> Companies { get; set; }
+        public DbSet<JobPost> JobPosts { get; set; }
     }
 }
