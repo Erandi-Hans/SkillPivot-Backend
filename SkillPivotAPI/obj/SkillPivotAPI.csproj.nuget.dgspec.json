@@ -81,6 +81,10 @@
             "Swashbuckle.AspNetCore": {
               "target": "Package",
               "version": "[10.1.0, )"
+            },
+            "UtilPack.NuGet": {
+              "target": "Package",
+              "version": "[2.1.0, )"
             }
           },
           "imports": [

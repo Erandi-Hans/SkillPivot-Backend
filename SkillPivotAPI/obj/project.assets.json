@@ -1176,6 +1176,15 @@
           }
         }
       },
+      "Microsoft.NETCore.Platforms/1.1.0": {
+        "type": "package",
+        "compile": {
+          "lib/netstandard1.0/_._": {}
+        },
+        "runtime": {
+          "lib/netstandard1.0/_._": {}
+        }
+      },
       "Microsoft.OpenApi/2.3.0": {
         "type": "package",
         "compile": {
@@ -1234,15 +1243,221 @@
           "buildTransitive/Mono.TextTemplating.targets": {}
         }
       },
+      "NETStandard.Library/1.6.1": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.NETCore.Platforms": "1.1.0"
+        }
+      },
       "Newtonsoft.Json/13.0.3": {
         "type": "package",
         "compile": {
-          "lib/net6.0/_._": {
+          "lib/net6.0/Newtonsoft.Json.dll": {
             "related": ".xml"
           }
         },
         "runtime": {
           "lib/net6.0/Newtonsoft.Json.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "NuGet.Commands/4.6.0": {
+        "type": "package",
+        "dependencies": {
+          "NETStandard.Library": "1.6.0",
+          "NuGet.Configuration": "4.6.0",
+          "NuGet.DependencyResolver.Core": "4.6.0",
+          "NuGet.Frameworks": "4.6.0",
+          "NuGet.ProjectModel": "4.6.0"
+        },
+        "compile": {
+          "lib/netstandard1.3/NuGet.Commands.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/netstandard1.3/NuGet.Commands.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "NuGet.Common/4.6.0": {
+        "type": "package",
+        "dependencies": {
+          "NETStandard.Library": "1.6.0",
+          "NuGet.Frameworks": "4.6.0"
+        },
+        "compile": {
+          "lib/netstandard1.3/NuGet.Common.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/netstandard1.3/NuGet.Common.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "NuGet.Configuration/4.6.0": {
+        "type": "package",
+        "dependencies": {
+          "NETStandard.Library": "1.6.0",
+          "NuGet.Common": "4.6.0",
+          "System.Security.Cryptography.ProtectedData": "4.0.0"
+        },
+        "compile": {
+          "lib/netstandard1.3/NuGet.Configuration.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/netstandard1.3/NuGet.Configuration.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "NuGet.DependencyResolver.Core/4.6.0": {
+        "type": "package",
+        "dependencies": {
+          "NETStandard.Library": "1.6.0",
+          "NuGet.Frameworks": "4.6.0",
+          "NuGet.LibraryModel": "4.6.0",
+          "NuGet.Protocol": "4.6.0"
+        },
+        "compile": {
+          "lib/netstandard1.3/NuGet.DependencyResolver.Core.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/netstandard1.3/NuGet.DependencyResolver.Core.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "NuGet.Frameworks/4.6.0": {
+        "type": "package",
+        "dependencies": {
+          "NETStandard.Library": "1.6.0"
+        },
+        "compile": {
+          "lib/netstandard1.3/NuGet.Frameworks.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/netstandard1.3/NuGet.Frameworks.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "NuGet.LibraryModel/4.6.0": {
+        "type": "package",
+        "dependencies": {
+          "NETStandard.Library": "1.6.0",
+          "NuGet.Common": "4.6.0",
+          "NuGet.Frameworks": "4.6.0",
+          "NuGet.Versioning": "4.6.0"
+        },
+        "compile": {
+          "lib/netstandard1.3/NuGet.LibraryModel.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/netstandard1.3/NuGet.LibraryModel.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "NuGet.Packaging/4.6.0": {
+        "type": "package",
+        "dependencies": {
+          "NETStandard.Library": "1.6.0",
+          "Newtonsoft.Json": "9.0.1",
+          "NuGet.Common": "4.6.0",
+          "NuGet.Packaging.Core": "4.6.0"
+        },
+        "compile": {
+          "lib/netstandard1.3/NuGet.Packaging.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/netstandard1.3/NuGet.Packaging.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "NuGet.Packaging.Core/4.6.0": {
+        "type": "package",
+        "dependencies": {
+          "NETStandard.Library": "1.6.0",
+          "NuGet.Common": "4.6.0",
+          "NuGet.Frameworks": "4.6.0",
+          "NuGet.Versioning": "4.6.0"
+        },
+        "compile": {
+          "lib/netstandard1.3/NuGet.Packaging.Core.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/netstandard1.3/NuGet.Packaging.Core.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "NuGet.ProjectModel/4.6.0": {
+        "type": "package",
+        "dependencies": {
+          "NETStandard.Library": "1.6.0",
+          "Newtonsoft.Json": "9.0.1",
+          "NuGet.DependencyResolver.Core": "4.6.0"
+        },
+        "compile": {
+          "lib/netstandard1.3/NuGet.ProjectModel.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/netstandard1.3/NuGet.ProjectModel.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "NuGet.Protocol/4.6.0": {
+        "type": "package",
+        "dependencies": {
+          "NETStandard.Library": "1.6.0",
+          "Newtonsoft.Json": "9.0.1",
+          "NuGet.Configuration": "4.6.0",
+          "NuGet.Packaging": "4.6.0"
+        },
+        "compile": {
+          "lib/netstandard1.3/NuGet.Protocol.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/netstandard1.3/NuGet.Protocol.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "NuGet.Versioning/4.6.0": {
+        "type": "package",
+        "dependencies": {
+          "NETStandard.Library": "1.6.0"
+        },
+        "compile": {
+          "lib/netstandard1.3/NuGet.Versioning.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/netstandard1.3/NuGet.Versioning.dll": {
             "related": ".xml"
           }
         }
@@ -1631,6 +1846,40 @@
           "runtimes/win/lib/net9.0/System.Windows.Extensions.dll": {
             "assetType": "runtime",
             "rid": "win"
+          }
+        }
+      },
+      "UtilPack/1.4.0": {
+        "type": "package",
+        "dependencies": {
+          "NETStandard.Library": "1.6.1"
+        },
+        "compile": {
+          "lib/netstandard1.5/UtilPack.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/netstandard1.5/UtilPack.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "UtilPack.NuGet/2.1.0": {
+        "type": "package",
+        "dependencies": {
+          "NETStandard.Library": "1.6.1",
+          "NuGet.Commands": "4.6.0",
+          "UtilPack": "1.4.0"
+        },
+        "compile": {
+          "lib/netstandard1.3/UtilPack.NuGet.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/netstandard1.3/UtilPack.NuGet.dll": {
+            "related": ".xml"
           }
         }
       }
@@ -3716,6 +3965,21 @@
         "ref/netstandard2.0/Microsoft.NET.StringTools.xml"
       ]
     },
+    "Microsoft.NETCore.Platforms/1.1.0": {
+      "sha512": "kz0PEW2lhqygehI/d6XsPCQzD7ff7gUJaVGPVETX611eadGsA3A877GdSlU0LRVMCTH/+P3o2iDTak+S08V2+A==",
+      "type": "package",
+      "path": "microsoft.netcore.platforms/1.1.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "ThirdPartyNotices.txt",
+        "dotnet_library_license.txt",
+        "lib/netstandard1.0/_._",
+        "microsoft.netcore.platforms.1.1.0.nupkg.sha512",
+        "microsoft.netcore.platforms.nuspec",
+        "runtime.json"
+      ]
+    },
     "Microsoft.OpenApi/2.3.0": {
       "sha512": "5RZpjyt0JMmoc/aEgY9c1vE5pusdDGvkPl9qKIy9KFbRiIXD+w7gBJxX+unSjzzOcfgRoYxnO4okZyqDAL2WEw==",
       "type": "package",
@@ -3804,6 +4068,19 @@
         "readme.md"
       ]
     },
+    "NETStandard.Library/1.6.1": {
+      "sha512": "WcSp3+vP+yHNgS8EV5J7pZ9IRpeDuARBPN28by8zqff1wJQXm26PVU8L3/fYLBJVU7BtDyqNVWq2KlCVvSSR4A==",
+      "type": "package",
+      "path": "netstandard.library/1.6.1",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "ThirdPartyNotices.txt",
+        "dotnet_library_license.txt",
+        "netstandard.library.1.6.1.nupkg.sha512",
+        "netstandard.library.nuspec"
+      ]
+    },
     "Newtonsoft.Json/13.0.3": {
       "sha512": "HrC5BXdl00IP9zeV+0Z848QWPAoCr9P3bDEZguI+gkLcBKAOxix/tLEAAHC+UvDNPv4a2d18lOReHMOagPa+zQ==",
       "type": "package",
@@ -3832,6 +4109,173 @@
         "newtonsoft.json.13.0.3.nupkg.sha512",
         "newtonsoft.json.nuspec",
         "packageIcon.png"
+      ]
+    },
+    "NuGet.Commands/4.6.0": {
+      "sha512": "Q6l2ddz5QyRVassN8I0BF6M0oWgsRxtnp1rT+3vXrPsrhH/44aI6zOWGsRK7qXH4z0YOR/kwRMGmKzfIOWoMbw==",
+      "type": "package",
+      "path": "nuget.commands/4.6.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "lib/net46/NuGet.Commands.dll",
+        "lib/net46/NuGet.Commands.xml",
+        "lib/netstandard1.3/NuGet.Commands.dll",
+        "lib/netstandard1.3/NuGet.Commands.xml",
+        "nuget.commands.4.6.0.nupkg.sha512",
+        "nuget.commands.nuspec"
+      ]
+    },
+    "NuGet.Common/4.6.0": {
+      "sha512": "1LqgbOeCwmGOqlv7dnObK9mmJNqddPict2v8EzCEaUuRMx0MWy/s8fYe0BMnjuGtJ4NA40F4myJPafDthgaufA==",
+      "type": "package",
+      "path": "nuget.common/4.6.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "lib/net46/NuGet.Common.dll",
+        "lib/net46/NuGet.Common.xml",
+        "lib/netstandard1.3/NuGet.Common.dll",
+        "lib/netstandard1.3/NuGet.Common.xml",
+        "nuget.common.4.6.0.nupkg.sha512",
+        "nuget.common.nuspec"
+      ]
+    },
+    "NuGet.Configuration/4.6.0": {
+      "sha512": "T6jZYxUCz8MIU51yoMroRLMYJ5+DyH4L82DxJs9iX9m0RWnVYwZMXov8GNrxWDvbKtvq42fJBVpEGM2rXLAk0g==",
+      "type": "package",
+      "path": "nuget.configuration/4.6.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "lib/net46/NuGet.Configuration.dll",
+        "lib/net46/NuGet.Configuration.xml",
+        "lib/netstandard1.3/NuGet.Configuration.dll",
+        "lib/netstandard1.3/NuGet.Configuration.xml",
+        "nuget.configuration.4.6.0.nupkg.sha512",
+        "nuget.configuration.nuspec"
+      ]
+    },
+    "NuGet.DependencyResolver.Core/4.6.0": {
+      "sha512": "mitybR5hwhiZFgz/N/KOK4utEoSpd0bt1RBx6Cj5BXf/2O+oi014ceBEI1+HGYVQlcRVUp1ExyhE0T1MqT/puQ==",
+      "type": "package",
+      "path": "nuget.dependencyresolver.core/4.6.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "lib/net46/NuGet.DependencyResolver.Core.dll",
+        "lib/net46/NuGet.DependencyResolver.Core.xml",
+        "lib/netstandard1.3/NuGet.DependencyResolver.Core.dll",
+        "lib/netstandard1.3/NuGet.DependencyResolver.Core.xml",
+        "nuget.dependencyresolver.core.4.6.0.nupkg.sha512",
+        "nuget.dependencyresolver.core.nuspec"
+      ]
+    },
+    "NuGet.Frameworks/4.6.0": {
+      "sha512": "ge6ADaDDC/rwSQuRU6KyBdEKzlrSBXMXs+JCghLMlYyVy2qbaojLIPgZ6siStPQ2CjJvApyQQQQxYKyUWmJVxw==",
+      "type": "package",
+      "path": "nuget.frameworks/4.6.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "lib/net40/NuGet.Frameworks.dll",
+        "lib/net40/NuGet.Frameworks.xml",
+        "lib/net46/NuGet.Frameworks.dll",
+        "lib/net46/NuGet.Frameworks.xml",
+        "lib/netstandard1.3/NuGet.Frameworks.dll",
+        "lib/netstandard1.3/NuGet.Frameworks.xml",
+        "nuget.frameworks.4.6.0.nupkg.sha512",
+        "nuget.frameworks.nuspec"
+      ]
+    },
+    "NuGet.LibraryModel/4.6.0": {
+      "sha512": "Rc0m/7fQm47hq2QcuIysPi5wL7cp1hEVcGZjoEn8XBnCjqxjZgY/1gLhPxB9xX6zy+wsSKfH7jvfMERygfy46Q==",
+      "type": "package",
+      "path": "nuget.librarymodel/4.6.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "lib/net46/NuGet.LibraryModel.dll",
+        "lib/net46/NuGet.LibraryModel.xml",
+        "lib/netstandard1.3/NuGet.LibraryModel.dll",
+        "lib/netstandard1.3/NuGet.LibraryModel.xml",
+        "nuget.librarymodel.4.6.0.nupkg.sha512",
+        "nuget.librarymodel.nuspec"
+      ]
+    },
+    "NuGet.Packaging/4.6.0": {
+      "sha512": "HLcOl8/CbSQg92FU+CYJ7HBBQ+MoR3Ef8I8ptAenyDs3fD9vmqH6XibGivgFb5fWYQtNvxGSLJQAv/eBNJIodA==",
+      "type": "package",
+      "path": "nuget.packaging/4.6.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "lib/net46/NuGet.Packaging.dll",
+        "lib/net46/NuGet.Packaging.xml",
+        "lib/netstandard1.3/NuGet.Packaging.dll",
+        "lib/netstandard1.3/NuGet.Packaging.xml",
+        "nuget.packaging.4.6.0.nupkg.sha512",
+        "nuget.packaging.nuspec"
+      ]
+    },
+    "NuGet.Packaging.Core/4.6.0": {
+      "sha512": "hd0a3LLRtbwXJhdBr8jLGQahCsK+eBcVt2XDGPTyk1WT7hwWmlVwk6+SHUYc5h1PSSx8SBEUBALCi8wSrgiF3w==",
+      "type": "package",
+      "path": "nuget.packaging.core/4.6.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "lib/net46/NuGet.Packaging.Core.dll",
+        "lib/net46/NuGet.Packaging.Core.xml",
+        "lib/netstandard1.3/NuGet.Packaging.Core.dll",
+        "lib/netstandard1.3/NuGet.Packaging.Core.xml",
+        "nuget.packaging.core.4.6.0.nupkg.sha512",
+        "nuget.packaging.core.nuspec"
+      ]
+    },
+    "NuGet.ProjectModel/4.6.0": {
+      "sha512": "CYXRu6a4XpWoa3SwYT8PG6SurGLtQNRCStfmlXe0HVKS1JPn3AfNd3xPedIF+256GwiecGUvscgfTpY3HwvjHw==",
+      "type": "package",
+      "path": "nuget.projectmodel/4.6.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "lib/net46/NuGet.ProjectModel.dll",
+        "lib/net46/NuGet.ProjectModel.xml",
+        "lib/netstandard1.3/NuGet.ProjectModel.dll",
+        "lib/netstandard1.3/NuGet.ProjectModel.xml",
+        "nuget.projectmodel.4.6.0.nupkg.sha512",
+        "nuget.projectmodel.nuspec"
+      ]
+    },
+    "NuGet.Protocol/4.6.0": {
+      "sha512": "Usc8VdBo1XAzXfWLzoHGHnt7oDQi1g5DiOHwFmsPKbFyKgSfrivfLMFLA33395svvAUdTHOiCMhsEWjn4aVoQg==",
+      "type": "package",
+      "path": "nuget.protocol/4.6.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "lib/net46/NuGet.Protocol.dll",
+        "lib/net46/NuGet.Protocol.xml",
+        "lib/netstandard1.3/NuGet.Protocol.dll",
+        "lib/netstandard1.3/NuGet.Protocol.xml",
+        "nuget.protocol.4.6.0.nupkg.sha512",
+        "nuget.protocol.nuspec"
+      ]
+    },
+    "NuGet.Versioning/4.6.0": {
+      "sha512": "OLxhuxuvtO+zoLf36g/vdHsyNojbY1+gC1tVgs9mZkr0Npg/pbaTJjSKfQ9z6QXS3gCnJOJ+Hnnap9hKzrAMmA==",
+      "type": "package",
+      "path": "nuget.versioning/4.6.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "lib/net46/NuGet.Versioning.dll",
+        "lib/net46/NuGet.Versioning.xml",
+        "lib/netstandard1.3/NuGet.Versioning.dll",
+        "lib/netstandard1.3/NuGet.Versioning.xml",
+        "nuget.versioning.4.6.0.nupkg.sha512",
+        "nuget.versioning.nuspec"
       ]
     },
     "Swashbuckle.AspNetCore/10.1.0": {
@@ -4402,6 +4846,42 @@
         "system.windows.extensions.nuspec",
         "useSharedDesignerContext.txt"
       ]
+    },
+    "UtilPack/1.4.0": {
+      "sha512": "O0AI437o+Eu4QWR3fnhj1Ooov9mHsSmACjQq2uKm9R7saTk1BnS8P8dRWQQVUfEa3yCTp/1pbT6aKIW2O/FBUw==",
+      "type": "package",
+      "path": "utilpack/1.4.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "lib/net40/UtilPack.dll",
+        "lib/net40/UtilPack.xml",
+        "lib/net45/UtilPack.dll",
+        "lib/net45/UtilPack.xml",
+        "lib/netstandard1.0/UtilPack.dll",
+        "lib/netstandard1.0/UtilPack.xml",
+        "lib/netstandard1.1/UtilPack.dll",
+        "lib/netstandard1.1/UtilPack.xml",
+        "lib/netstandard1.5/UtilPack.dll",
+        "lib/netstandard1.5/UtilPack.xml",
+        "utilpack.1.4.0.nupkg.sha512",
+        "utilpack.nuspec"
+      ]
+    },
+    "UtilPack.NuGet/2.1.0": {
+      "sha512": "qPyTRmXj5cqB/Xl3IgMkhWzIyBHb3aZSv3oauIB/lPdv3/ik1R8TsKwxj2QUnEwnzUL3QIExVAHLPVZxYYx00g==",
+      "type": "package",
+      "path": "utilpack.nuget/2.1.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "lib/net46/UtilPack.NuGet.dll",
+        "lib/net46/UtilPack.NuGet.xml",
+        "lib/netstandard1.3/UtilPack.NuGet.dll",
+        "lib/netstandard1.3/UtilPack.NuGet.xml",
+        "utilpack.nuget.2.1.0.nupkg.sha512",
+        "utilpack.nuget.nuspec"
+      ]
     }
   },
   "projectFileDependencyGroups": {
@@ -4412,7 +4892,8 @@
       "Microsoft.EntityFrameworkCore.Design >= 10.0.1",
       "Microsoft.EntityFrameworkCore.SqlServer >= 10.0.1",
       "Microsoft.EntityFrameworkCore.Tools >= 10.0.1",
-      "Swashbuckle.AspNetCore >= 10.1.0"
+      "Swashbuckle.AspNetCore >= 10.1.0",
+      "UtilPack.NuGet >= 2.1.0"
     ]
   },
   "packageFolders": {
@@ -4496,6 +4977,10 @@
           "Swashbuckle.AspNetCore": {
             "target": "Package",
             "version": "[10.1.0, )"
+          },
+          "UtilPack.NuGet": {
+            "target": "Package",
+            "version": "[2.1.0, )"
           }
         },
         "imports": [
@@ -4934,5 +5419,67 @@
         }
       }
     }
-  }
+  },
+  "logs": [
+    {
+      "code": "NU1902",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "Package 'NuGet.Commands' 4.6.0 has a known moderate severity vulnerability, https://github.com/advisories/GHSA-3885-8gqc-3wpf",
+      "libraryId": "NuGet.Commands",
+      "targetGraphs": [
+        "net10.0"
+      ]
+    },
+    {
+      "code": "NU1903",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "Package 'NuGet.Commands' 4.6.0 has a known high severity vulnerability, https://github.com/advisories/GHSA-6qmf-mmc7-6c2p",
+      "libraryId": "NuGet.Commands",
+      "targetGraphs": [
+        "net10.0"
+      ]
+    },
+    {
+      "code": "NU1903",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "Package 'NuGet.Commands' 4.6.0 has a known high severity vulnerability, https://github.com/advisories/GHSA-g3q9-xf95-8hp5",
+      "libraryId": "NuGet.Commands",
+      "targetGraphs": [
+        "net10.0"
+      ]
+    },
+    {
+      "code": "NU1903",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "Package 'NuGet.Common' 4.6.0 has a known high severity vulnerability, https://github.com/advisories/GHSA-6qmf-mmc7-6c2p",
+      "libraryId": "NuGet.Common",
+      "targetGraphs": [
+        "net10.0"
+      ]
+    },
+    {
+      "code": "NU1904",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "Package 'NuGet.Packaging' 4.6.0 has a known critical severity vulnerability, https://github.com/advisories/GHSA-68w7-72jg-6qpp",
+      "libraryId": "NuGet.Packaging",
+      "targetGraphs": [
+        "net10.0"
+      ]
+    },
+    {
+      "code": "NU1903",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "Package 'NuGet.Protocol' 4.6.0 has a known high severity vulnerability, https://github.com/advisories/GHSA-g3q9-xf95-8hp5",
+      "libraryId": "NuGet.Protocol",
+      "targetGraphs": [
+        "net10.0"
+      ]
+    }
+  ]
 }

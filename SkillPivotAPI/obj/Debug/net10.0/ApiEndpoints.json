@@ -106,5 +106,51 @@
       }
     ],
     "ReturnTypes": []
+  },
+  {
+    "ContainingType": "SkillPivotAPI.Controllers.JobPostsController",
+    "Method": "GetJobPosts",
+    "RelativePath": "api/JobPosts",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.IEnumerable\u00601[[SkillPivotAPI.Models.JobPost, SkillPivotAPI, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "SkillPivotAPI.Controllers.JobPostsController",
+    "Method": "PostJobPost",
+    "RelativePath": "api/JobPosts",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "jobPost",
+        "Type": "SkillPivotAPI.Models.JobPost",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "SkillPivotAPI.Models.JobPost",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
   }
 ]
