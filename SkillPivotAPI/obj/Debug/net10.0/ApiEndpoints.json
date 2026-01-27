@@ -152,5 +152,31 @@
         "StatusCode": 200
       }
     ]
+  },
+  {
+    "ContainingType": "SkillPivotAPI.Controllers.JobPostsController",
+    "Method": "GetJobPost",
+    "RelativePath": "api/JobPosts/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "SkillPivotAPI.Models.JobPost",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
   }
 ]
