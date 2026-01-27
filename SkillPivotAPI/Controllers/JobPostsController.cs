@@ -1,7 +1,8 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using SkillPivotAPI.Data;
-using SkillPivotAPI.Models;
+using SkillPivotAPI.Data; // Access to ApplicationDbContext
+using SkillPivotAPI.Models; // Access to JobPost Model
 
 namespace SkillPivotAPI.Controllers
 {
@@ -11,59 +12,55 @@ namespace SkillPivotAPI.Controllers
     {
         private readonly ApplicationDbContext _context;
 
-        // Constructor to initialize the database context
+        // Constructor: Injecting the Database Context
         public JobPostsController(ApplicationDbContext context)
         {
             _context = context;
         }
 
-        // GET: api/JobPosts
-        // Retrieves a list of all internship/job postings from the database
-        [HttpGet]
-        public async Task<ActionResult<IEnumerable<JobPost>>> GetJobPosts()
+        /// <summary>
+        /// Creates a new job post in the database.
+        /// Route: POST /api/JobPosts
+        /// </summary>
+        /// <param name="jobPost">The job post object received from the Frontend</param>
+        [HttpPost]
+        public async Task<IActionResult> PostJob([FromBody] JobPost jobPost)
         {
-            // Fetching all job post records as a list
-            return await _context.JobPosts.ToListAsync();
-        }
-
-        // GET: api/JobPosts/5
-        // Retrieves a specific job post by its unique ID
-        // This is required for the CreatedAtAction response in the POST method
-        [HttpGet("{id}")]
-        public async Task<ActionResult<JobPost>> GetJobPost(int id)
-        {
-            var jobPost = await _context.JobPosts.FindAsync(id);
-
-            // If the job post does not exist, return a 404 Not Found response
-            if (jobPost == null)
+            // Check if the model state is valid according to the JobPost class rules
+            if (!ModelState.IsValid)
             {
-                return NotFound();
+                return BadRequest(ModelState);
             }
 
-            return jobPost;
-        }
+            // Check if the incoming data is null
+            if (jobPost == null)
+            {
+                return BadRequest(new { message = "Job data cannot be null." });
+            }
 
-        // POST: api/JobPosts
-        // Creates a new internship/job posting in the database
-        [HttpPost]
-        public async Task<ActionResult<JobPost>> PostJobPost(JobPost jobPost)
-        {
             try
             {
-                // Add the new job post object to the context
+                // Add the job post to the JobPosts table
                 _context.JobPosts.Add(jobPost);
 
                 // Save changes to the SQL database asynchronously
                 await _context.SaveChangesAsync();
 
-                // Returns a 201 Created status code. 
-                // It also provides the URL for the newly created resource via GetJobPost
-                return CreatedAtAction(nameof(GetJobPost), new { id = jobPost.JobPostId }, jobPost);
+                // Return a success response with the new JobPostId
+                return Ok(new
+                {
+                    message = "Internship Posted Successfully!",
+                    jobId = jobPost.JobPostId
+                });
             }
-            catch (DbUpdateException)
+            catch (Exception ex)
             {
-                // Handles database update errors, such as invalid Foreign Keys (e.g., wrong CompanyId)
-                return BadRequest("Error saving data. Please ensure the CompanyId exists in the database.");
+                // Return a 500 status code if there is a server or database error
+                return StatusCode(500, new
+                {
+                    message = "An error occurred while saving to the database.",
+                    error = ex.Message
+                });
             }
         }
     }
