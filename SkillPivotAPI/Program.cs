@@ -17,6 +17,7 @@ builder.Services.AddDbContext<ApplicationDbContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 
 // Setup CORS policy for React Frontend (Vite)
+// This allows your React app on port 5173 to communicate with this API
 builder.Services.AddCors(options =>
 {
     options.AddPolicy("AllowReactApp",
@@ -39,10 +40,9 @@ if (app.Environment.IsDevelopment())
     // Enable the Swagger UI to interact with the API
     app.UseSwaggerUI(options =>
     {
-        // For .NET 9, this is the most stable way to load the endpoint
         options.SwaggerEndpoint("/swagger/v1/swagger.json", "SkillPivotlk API v1");
 
-        // This makes Swagger the default page (at https://localhost:7118/)
+        // This makes Swagger the default page (at root URL)
         options.RoutePrefix = string.Empty;
     });
 }
@@ -50,7 +50,8 @@ if (app.Environment.IsDevelopment())
 // Redirect all HTTP traffic to HTTPS for security
 app.UseHttpsRedirection();
 
-// Use the CORS policy before mapping controllers
+// IMPORTANT: Use CORS policy before Authorization and Mapping
+// This activates the "AllowReactApp" policy we defined above
 app.UseCors("AllowReactApp");
 
 // Handle User Authorization
