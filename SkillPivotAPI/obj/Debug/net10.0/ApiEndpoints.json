@@ -100,8 +100,8 @@
     "Order": 0,
     "Parameters": [
       {
-        "Name": "user",
-        "Type": "SkillPivotAPI.Models.User",
+        "Name": "model",
+        "Type": "SkillPivotAPI.Models.RegisterDto",
         "IsRequired": true
       }
     ],
