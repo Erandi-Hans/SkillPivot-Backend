@@ -7,6 +7,10 @@
       "RelativeMoniker": "D:0:0:{5DAE86C7-E4E5-A750-CCF2-FC41616CC2F2}|SkillPivotAPI.csproj|solutionrelative:data\\authcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
+      "AbsoluteMoniker": "D:0:0:{5DAE86C7-E4E5-A750-CCF2-FC41616CC2F2}|SkillPivotAPI.csproj|d:\\backend\\new folder\\skillpivotapi\\models\\googleloginrequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{5DAE86C7-E4E5-A750-CCF2-FC41616CC2F2}|SkillPivotAPI.csproj|solutionrelative:models\\googleloginrequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{5DAE86C7-E4E5-A750-CCF2-FC41616CC2F2}|SkillPivotAPI.csproj|d:\\backend\\new folder\\skillpivotapi\\models\\registerdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{5DAE86C7-E4E5-A750-CCF2-FC41616CC2F2}|SkillPivotAPI.csproj|solutionrelative:models\\registerdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
@@ -77,12 +81,8 @@
           "SelectedChildIndex": 6,
           "Children": [
             {
-              "$type": "Bookmark",
-              "Name": "ST:0:0:{1c4feeaa-4718-4aa9-859d-94ce25d182ba}"
-            },
-            {
               "$type": "Document",
-              "DocumentIndex": 8,
+              "DocumentIndex": 9,
               "Title": "User.cs",
               "DocumentMoniker": "D:\\backend\\New folder\\SkillPivotAPI\\Models\\User.cs",
               "RelativeDocumentMoniker": "Models\\User.cs",
@@ -94,8 +94,12 @@
               "IsPinned": true
             },
             {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{1c4feeaa-4718-4aa9-859d-94ce25d182ba}"
+            },
+            {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 4,
               "Title": "JobPost.cs",
               "DocumentMoniker": "D:\\backend\\New folder\\SkillPivotAPI\\Models\\JobPost.cs",
               "RelativeDocumentMoniker": "Models\\JobPost.cs",
@@ -108,7 +112,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 6,
               "Title": "Program.cs",
               "DocumentMoniker": "D:\\backend\\New folder\\SkillPivotAPI\\Program.cs",
               "RelativeDocumentMoniker": "Program.cs",
@@ -121,7 +125,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 3,
               "Title": "LoginRequest.cs",
               "DocumentMoniker": "D:\\backend\\New folder\\SkillPivotAPI\\Data\\LoginRequest.cs",
               "RelativeDocumentMoniker": "Data\\LoginRequest.cs",
@@ -134,7 +138,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 2,
               "Title": "RegisterDto.cs",
               "DocumentMoniker": "D:\\backend\\New folder\\SkillPivotAPI\\Models\\RegisterDto.cs",
               "RelativeDocumentMoniker": "Models\\RegisterDto.cs",
@@ -153,14 +157,27 @@
               "RelativeDocumentMoniker": "Data\\AuthController.cs",
               "ToolTip": "D:\\backend\\New folder\\SkillPivotAPI\\Data\\AuthController.cs",
               "RelativeToolTip": "Data\\AuthController.cs",
-              "ViewState": "AgIAADsAAAAAAAAAAAAowFUAAAABAAAAAAAAAA==",
+              "ViewState": "AgIAAJAAAAAAAAAAAAAwwIMAAAATAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-12-30T16:09:29.076Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 9,
+              "DocumentIndex": 1,
+              "Title": "GoogleLoginRequest.cs",
+              "DocumentMoniker": "D:\\backend\\New folder\\SkillPivotAPI\\Models\\GoogleLoginRequest.cs",
+              "RelativeDocumentMoniker": "Models\\GoogleLoginRequest.cs",
+              "ToolTip": "D:\\backend\\New folder\\SkillPivotAPI\\Models\\GoogleLoginRequest.cs",
+              "RelativeToolTip": "Models\\GoogleLoginRequest.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAAEAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-28T16:40:23.951Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
               "Title": "ApplicationDbContext.cs",
               "DocumentMoniker": "D:\\backend\\New folder\\SkillPivotAPI\\Data\\ApplicationDbContext.cs",
               "RelativeDocumentMoniker": "Data\\ApplicationDbContext.cs",
@@ -172,7 +189,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 8,
               "Title": "SkillPivotAPI.http",
               "DocumentMoniker": "D:\\backend\\New folder\\SkillPivotAPI\\SkillPivotAPI.http",
               "RelativeDocumentMoniker": "SkillPivotAPI.http",
@@ -184,7 +201,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 5,
               "Title": "AdminController.cs",
               "DocumentMoniker": "D:\\backend\\New folder\\SkillPivotAPI\\Controllers\\AdminController.cs",
               "RelativeDocumentMoniker": "Controllers\\AdminController.cs",
@@ -197,7 +214,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 7,
               "Title": "JobPostsController.cs",
               "DocumentMoniker": "D:\\backend\\New folder\\SkillPivotAPI\\Controllers\\JobPostsController.cs",
               "RelativeDocumentMoniker": "Controllers\\JobPostsController.cs",
@@ -209,7 +226,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 10,
+              "DocumentIndex": 11,
               "Title": "appsettings.json",
               "DocumentMoniker": "D:\\backend\\New folder\\SkillPivotAPI\\appsettings.json",
               "RelativeDocumentMoniker": "appsettings.json",
@@ -221,7 +238,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 15,
+              "DocumentIndex": 16,
               "Title": "20260125161024_InitialFinalSetup.cs",
               "DocumentMoniker": "D:\\backend\\New folder\\SkillPivotAPI\\Migrations\\20260125161024_InitialFinalSetup.cs",
               "RelativeDocumentMoniker": "Migrations\\20260125161024_InitialFinalSetup.cs",
@@ -233,7 +250,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 11,
+              "DocumentIndex": 12,
               "Title": "Company.cs",
               "DocumentMoniker": "D:\\backend\\New folder\\SkillPivotAPI\\Models\\Company.cs",
               "RelativeDocumentMoniker": "Models\\Company.cs",
@@ -245,7 +262,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 12,
+              "DocumentIndex": 13,
               "Title": "20260115064900_AddMissingFields.cs",
               "DocumentMoniker": "D:\\backend\\New folder\\SkillPivotAPI\\Migrations\\20260115064900_AddMissingFields.cs",
               "RelativeDocumentMoniker": "Migrations\\20260115064900_AddMissingFields.cs",
@@ -256,7 +273,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 13,
+              "DocumentIndex": 14,
               "Title": "20260115060438_AddUserFields.cs",
               "DocumentMoniker": "D:\\backend\\New folder\\SkillPivotAPI\\Migrations\\20260115060438_AddUserFields.cs",
               "RelativeDocumentMoniker": "Migrations\\20260115060438_AddUserFields.cs",
@@ -267,7 +284,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 14,
+              "DocumentIndex": 15,
               "Title": "SkillPivotAPI.csproj",
               "DocumentMoniker": "D:\\backend\\New folder\\SkillPivotAPI\\SkillPivotAPI.csproj",
               "RelativeDocumentMoniker": "SkillPivotAPI.csproj",

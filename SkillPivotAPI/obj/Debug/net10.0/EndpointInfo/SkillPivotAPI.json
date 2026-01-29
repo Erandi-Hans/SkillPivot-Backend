@@ -204,6 +204,37 @@
         }
       }
     },
+    "/api/Auth/google-login": {
+      "post": {
+        "tags": [
+          "Auth"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/GoogleLoginRequest"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/GoogleLoginRequest"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/GoogleLoginRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
     "/api/JobPosts": {
       "post": {
         "tags": [
@@ -284,6 +315,16 @@
             "items": {
               "$ref": "#/components/schemas/JobPost"
             },
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "GoogleLoginRequest": {
+        "type": "object",
+        "properties": {
+          "token": {
+            "type": "string",
             "nullable": true
           }
         },
