@@ -5,15 +5,22 @@ var builder = WebApplication.CreateBuilder(args);
 
 // --- 1. SERVICES REGISTRATION ---
 
-builder.Services.AddControllers();
+// Add Controllers and configure JSON options to maintain property names as they are in the Model
+builder.Services.AddControllers()
+    .AddJsonOptions(options =>
+    {
+        // This prevents the API from changing "Status" to "status" automatically
+        options.JsonSerializerOptions.PropertyNamingPolicy = null;
+    });
+
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-// Database configuration
+// Database configuration for SQL Server
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 
-// CORS setup for React (Vite)
+// CORS setup to allow the React Frontend (Vite) to access the API
 builder.Services.AddCors(options =>
 {
     options.AddPolicy("AllowReactApp",
@@ -26,21 +33,21 @@ var app = builder.Build();
 
 // --- 2. MIDDLEWARE PIPELINE ---
 
+// Enable Swagger UI only in Development mode
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
     app.UseSwaggerUI(options =>
     {
         options.SwaggerEndpoint("/swagger/v1/swagger.json", "SkillPivotlk API v1");
-        options.RoutePrefix = string.Empty;
+        options.RoutePrefix = string.Empty; // Set Swagger as the default landing page
     });
 }
 
-// සංවර්ධන කටයුතු වලදී (Development) HTTPS redirection එක තාවකාලිකව අක්‍රීය කර බැලිය හැක 
-// එවිට http://localhost:7118 ලෙස භාවිතා කළ හැක
+// Redirect HTTP requests to HTTPS (Optional: Keep disabled if testing on local HTTP)
 // app.UseHttpsRedirection(); 
 
-// Activate CORS
+// IMPORTANT: CORS must be placed before MapControllers and after UseRouting
 app.UseCors("AllowReactApp");
 
 app.UseAuthorization();
