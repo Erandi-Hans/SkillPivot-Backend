@@ -56,6 +56,9 @@ D:\backend\New folder\SkillPivotAPI\bin\Debug\net10.0\Azure.Core.dll
 D:\backend\New folder\SkillPivotAPI\bin\Debug\net10.0\Azure.Identity.dll
 D:\backend\New folder\SkillPivotAPI\bin\Debug\net10.0\BCrypt.Net-Next.dll
 D:\backend\New folder\SkillPivotAPI\bin\Debug\net10.0\BouncyCastle.Cryptography.dll
+D:\backend\New folder\SkillPivotAPI\bin\Debug\net10.0\Google.Apis.dll
+D:\backend\New folder\SkillPivotAPI\bin\Debug\net10.0\Google.Apis.Auth.dll
+D:\backend\New folder\SkillPivotAPI\bin\Debug\net10.0\Google.Apis.Core.dll
 D:\backend\New folder\SkillPivotAPI\bin\Debug\net10.0\Humanizer.dll
 D:\backend\New folder\SkillPivotAPI\bin\Debug\net10.0\MailKit.dll
 D:\backend\New folder\SkillPivotAPI\bin\Debug\net10.0\Microsoft.AspNetCore.OpenApi.dll
@@ -116,6 +119,7 @@ D:\backend\New folder\SkillPivotAPI\bin\Debug\net10.0\System.Composition.TypedPa
 D:\backend\New folder\SkillPivotAPI\bin\Debug\net10.0\System.Configuration.ConfigurationManager.dll
 D:\backend\New folder\SkillPivotAPI\bin\Debug\net10.0\System.Formats.Nrbf.dll
 D:\backend\New folder\SkillPivotAPI\bin\Debug\net10.0\System.IdentityModel.Tokens.Jwt.dll
+D:\backend\New folder\SkillPivotAPI\bin\Debug\net10.0\System.Management.dll
 D:\backend\New folder\SkillPivotAPI\bin\Debug\net10.0\System.Memory.Data.dll
 D:\backend\New folder\SkillPivotAPI\bin\Debug\net10.0\System.Reflection.MetadataLoadContext.dll
 D:\backend\New folder\SkillPivotAPI\bin\Debug\net10.0\System.Resources.Extensions.dll
@@ -207,6 +211,7 @@ D:\backend\New folder\SkillPivotAPI\bin\Debug\net10.0\runtimes\win\lib\net9.0\Mi
 D:\backend\New folder\SkillPivotAPI\bin\Debug\net10.0\runtimes\win-arm64\native\Microsoft.Data.SqlClient.SNI.dll
 D:\backend\New folder\SkillPivotAPI\bin\Debug\net10.0\runtimes\win-x64\native\Microsoft.Data.SqlClient.SNI.dll
 D:\backend\New folder\SkillPivotAPI\bin\Debug\net10.0\runtimes\win-x86\native\Microsoft.Data.SqlClient.SNI.dll
+D:\backend\New folder\SkillPivotAPI\bin\Debug\net10.0\runtimes\win\lib\net7.0\System.Management.dll
 D:\backend\New folder\SkillPivotAPI\bin\Debug\net10.0\runtimes\win\lib\net9.0\System.Windows.Extensions.dll
 D:\backend\New folder\SkillPivotAPI\obj\Debug\net10.0\SkillPivotAPI.csproj.AssemblyReference.cache
 D:\backend\New folder\SkillPivotAPI\obj\Debug\net10.0\rpswa.dswa.cache.json
@@ -233,8 +238,3 @@ D:\backend\New folder\SkillPivotAPI\obj\Debug\net10.0\refint\SkillPivotAPI.dll
 D:\backend\New folder\SkillPivotAPI\obj\Debug\net10.0\SkillPivotAPI.pdb
 D:\backend\New folder\SkillPivotAPI\obj\Debug\net10.0\SkillPivotAPI.genruntimeconfig.cache
 D:\backend\New folder\SkillPivotAPI\obj\Debug\net10.0\ref\SkillPivotAPI.dll
-D:\backend\New folder\SkillPivotAPI\bin\Debug\net10.0\Google.Apis.dll
-D:\backend\New folder\SkillPivotAPI\bin\Debug\net10.0\Google.Apis.Auth.dll
-D:\backend\New folder\SkillPivotAPI\bin\Debug\net10.0\Google.Apis.Core.dll
-D:\backend\New folder\SkillPivotAPI\bin\Debug\net10.0\System.Management.dll
-D:\backend\New folder\SkillPivotAPI\bin\Debug\net10.0\runtimes\win\lib\net7.0\System.Management.dll

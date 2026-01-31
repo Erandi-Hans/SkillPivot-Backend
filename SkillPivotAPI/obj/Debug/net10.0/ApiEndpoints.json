@@ -77,15 +77,15 @@
   },
   {
     "ContainingType": "SkillPivotAPI.Controllers.AuthController",
-    "Method": "GoogleLogin",
-    "RelativePath": "api/Auth/google-login",
+    "Method": "ForgotPassword",
+    "RelativePath": "api/Auth/forgot-password",
     "HttpMethod": "POST",
     "IsController": true,
     "Order": 0,
     "Parameters": [
       {
-        "Name": "request",
-        "Type": "SkillPivotAPI.Controllers.GoogleLoginRequest",
+        "Name": "model",
+        "Type": "SkillPivotAPI.Controllers.ForgotPasswordDto",
         "IsRequired": true
       }
     ],
@@ -100,8 +100,8 @@
     "Order": 0,
     "Parameters": [
       {
-        "Name": "request",
-        "Type": "SkillPivotAPI.Data.LoginRequest",
+        "Name": "model",
+        "Type": "SkillPivotAPI.Controllers.LoginRequest",
         "IsRequired": true
       }
     ],
@@ -116,8 +116,8 @@
     "Order": 0,
     "Parameters": [
       {
-        "Name": "model",
-        "Type": "SkillPivotAPI.Models.RegisterDto",
+        "Name": "user",
+        "Type": "SkillPivotAPI.Models.User",
         "IsRequired": true
       }
     ],
