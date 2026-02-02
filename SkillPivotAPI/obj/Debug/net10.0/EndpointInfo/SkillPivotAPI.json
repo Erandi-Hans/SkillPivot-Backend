@@ -236,6 +236,42 @@
       }
     },
     "/api/JobPosts": {
+      "get": {
+        "tags": [
+          "JobPosts"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/JobPost"
+                  }
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/JobPost"
+                  }
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/JobPost"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
       "post": {
         "tags": [
           "JobPosts"
@@ -265,52 +301,115 @@
           }
         }
       }
+    },
+    "/api/JobPosts/{id}": {
+      "put": {
+        "tags": [
+          "JobPosts"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/JobPost"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/JobPost"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/JobPost"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "JobPosts"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
     }
   },
   "components": {
     "schemas": {
       "Company": {
         "required": [
-          "companyName"
+          "CompanyName"
         ],
         "type": "object",
         "properties": {
-          "companyId": {
+          "CompanyId": {
             "type": "integer",
             "format": "int32"
           },
-          "companyName": {
+          "CompanyName": {
             "minLength": 1,
             "type": "string"
           },
-          "contactEmail": {
+          "ContactEmail": {
             "type": "string",
             "nullable": true
           },
-          "industry": {
+          "Industry": {
             "type": "string",
             "nullable": true
           },
-          "website": {
+          "Website": {
             "type": "string",
             "nullable": true
           },
-          "description": {
+          "Description": {
             "type": "string",
             "nullable": true
           },
-          "location": {
+          "Location": {
             "type": "string",
             "nullable": true
           },
-          "isVerified": {
+          "IsVerified": {
             "type": "boolean"
           },
-          "registeredDate": {
+          "RegisteredDate": {
             "type": "string",
             "format": "date-time"
           },
-          "jobPosts": {
+          "JobPosts": {
             "type": "array",
             "items": {
               "$ref": "#/components/schemas/JobPost"
@@ -323,7 +422,7 @@
       "ForgotPasswordDto": {
         "type": "object",
         "properties": {
-          "email": {
+          "Email": {
             "type": "string",
             "nullable": true
           }
@@ -332,45 +431,45 @@
       },
       "JobPost": {
         "required": [
-          "companyId",
-          "description",
-          "jobTitle"
+          "CompanyId",
+          "Description",
+          "JobTitle"
         ],
         "type": "object",
         "properties": {
-          "jobPostId": {
+          "JobPostId": {
             "type": "integer",
             "format": "int32"
           },
-          "jobTitle": {
+          "JobTitle": {
             "minLength": 1,
             "type": "string"
           },
-          "description": {
+          "Description": {
             "minLength": 1,
             "type": "string"
           },
-          "technologyStack": {
+          "TechnologyStack": {
             "type": "string",
             "nullable": true
           },
-          "jobType": {
+          "JobType": {
             "type": "string",
             "nullable": true
           },
-          "jobRole": {
+          "JobRole": {
             "type": "string",
             "nullable": true
           },
-          "status": {
+          "Status": {
             "type": "string",
             "nullable": true
           },
-          "postedDate": {
+          "PostedDate": {
             "type": "string",
             "format": "date-time"
           },
-          "companyId": {
+          "CompanyId": {
             "type": "integer",
             "format": "int32"
           }
@@ -380,11 +479,11 @@
       "LoginRequest": {
         "type": "object",
         "properties": {
-          "email": {
+          "Email": {
             "type": "string",
             "nullable": true
           },
-          "password": {
+          "Password": {
             "type": "string",
             "nullable": true
           }
@@ -393,56 +492,56 @@
       },
       "User": {
         "required": [
-          "email",
-          "firstname",
-          "lastname",
-          "password",
-          "role"
+          "Email",
+          "Firstname",
+          "Lastname",
+          "Password",
+          "Role"
         ],
         "type": "object",
         "properties": {
-          "userId": {
+          "UserId": {
             "type": "integer",
             "format": "int32"
           },
-          "email": {
+          "Email": {
             "minLength": 1,
             "type": "string",
             "format": "email"
           },
-          "password": {
+          "Password": {
             "minLength": 1,
             "type": "string"
           },
-          "role": {
+          "Role": {
             "minLength": 1,
             "type": "string"
           },
-          "firstname": {
+          "Firstname": {
             "minLength": 1,
             "type": "string"
           },
-          "lastname": {
+          "Lastname": {
             "minLength": 1,
             "type": "string"
           },
-          "verificationcode": {
+          "Verificationcode": {
             "type": "string",
             "nullable": true
           },
-          "otpExpiry": {
+          "OTPExpiry": {
             "type": "string",
             "format": "date-time",
             "nullable": true
           },
-          "isVerified": {
+          "IsVerified": {
             "type": "boolean"
           },
-          "location": {
+          "Location": {
             "type": "string",
             "nullable": true
           },
-          "industry": {
+          "Industry": {
             "type": "string",
             "nullable": true
           }

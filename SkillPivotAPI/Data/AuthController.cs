@@ -18,7 +18,7 @@ namespace SkillPivotAPI.Controllers
             _context = context;
         }
 
-        // --- 1. LOGIN: Handles authentication and role mapping ---
+        // --- 1. LOGIN: Handles authentication, role mapping, and company ID retrieval ---
         [HttpPost("login")]
         public async Task<IActionResult> Login([FromBody] LoginRequest model)
         {
@@ -31,15 +31,25 @@ namespace SkillPivotAPI.Controllers
             }
 
             // ROLE MAPPING FIX:
-            // In your DB, the role is "Internship Seeker". 
-            // If the frontend sends "Intern", we must ensure they match.
             string responseRole = user.Role;
             if (responseRole == "Internship Seekers")
             {
-                responseRole = "Intern"; // Mapping to match your React Tab value
+                responseRole = "Intern";
             }
 
-            // Return data with lowercase keys to match your frontend 'userData' usage
+            // NEW LOGIC: Retrieve CompanyId if the user belongs to a company
+            int? companyId = null;
+            if (responseRole == "Company")
+            {
+                // Match the user's email with the ContactEmail in the Companies table
+                var company = await _context.Companies.FirstOrDefaultAsync(c => c.ContactEmail == user.Email);
+                if (company != null)
+                {
+                    companyId = company.CompanyId;
+                }
+            }
+
+            // Return data with companyId included in the response
             return Ok(new
             {
                 message = "Login successful!",
@@ -47,12 +57,15 @@ namespace SkillPivotAPI.Controllers
                 {
                     userId = user.UserId,
                     email = user.Email,
-                    role = responseRole, // Now returns "Intern" instead of "Internship Seeker"
+                    role = responseRole,
                     firstName = user.Firstname,
-                    lastName = user.Lastname
+                    lastName = user.Lastname,
+                    // Sending companyId here so frontend can store it
+                    companyId = companyId
                 },
-                // Also sending role at top level just in case
-                role = responseRole
+                role = responseRole,
+                // Also sending companyId at top level for easier access
+                companyId = companyId
             });
         }
 
@@ -84,7 +97,6 @@ namespace SkillPivotAPI.Controllers
             try
             {
                 string senderEmail = "erandi2287hansika@gmail.com";
-                // IMPORTANT: Generate a NEW 16-character App Password from Google Account
                 string appPassword = "dqznegmyqlvhplaj";
 
                 var mailMessage = new MailMessage
@@ -113,7 +125,6 @@ namespace SkillPivotAPI.Controllers
         }
     }
 
-    // DTOs for data binding
     public class LoginRequest { public string Email { get; set; } = string.Empty; public string Password { get; set; } = string.Empty; }
     public class ForgotPasswordDto { public string Email { get; set; } = string.Empty; }
 }
