@@ -12,90 +12,96 @@ namespace SkillPivotAPI.Controllers
         private readonly ApplicationDbContext _context;
 
         /// <summary>
-        /// Constructor to initialize the database context for database operations.
+        /// Constructor: Injects the ApplicationDbContext to handle all database interactions.
         /// </summary>
-        /// <param name="context">The application database context instance.</param>
+        /// <param name="context">The database context instance for the SkillPivot application.</param>
         public UsersController(ApplicationDbContext context)
         {
             _context = context;
         }
 
         /// <summary>
-        /// Retrieves the personal profile details of a user by their unique ID.
-        /// GET: api/Users/5
+        /// HTTP GET: Retrieves a specific user's profile details using their Unique ID.
+        /// Endpoint: GET api/Users/{id}
         /// </summary>
-        /// <param name="id">The unique ID of the user to fetch.</param>
-        /// <returns>A Task representing the asynchronous operation, containing the User object.</returns>
+        /// <param name="id">The integer ID of the user to retrieve.</param>
+        /// <returns>Returns the User object if found; otherwise, a 404 Not Found response.</returns>
         [HttpGet("{id}")]
         public async Task<ActionResult<User>> GetUser(int id)
         {
-            // Search for the user record in the Users table by primary key
+            // Use Entity Framework to find the user in the database asynchronously
             var user = await _context.Users.FindAsync(id);
 
             if (user == null)
             {
-                // Return 404 Not Found if no user exists with the given ID
+                // Return a descriptive 404 error if the user record does not exist
                 return NotFound(new { message = "User profile not found." });
             }
 
-            // Return 200 OK with the full user object (Firstname, Lastname, Email, etc.)
+            // Return a 200 OK response containing the full user object
             return Ok(user);
         }
 
         /// <summary>
-        /// Updates the profile information for a specific user based on the provided ID.
-        /// PUT: api/Users/5
+        /// HTTP PUT: Updates an existing user's profile information.
+        /// Endpoint: PUT api/Users/{id}
         /// </summary>
-        /// <param name="id">The unique ID of the user to be updated.</param>
-        /// <param name="updatedUser">The modified user object received from the frontend.</param>
-        /// <returns>A Task representing the asynchronous operation result.</returns>
+        /// <param name="id">The ID of the user specified in the URL route.</param>
+        /// <param name="updatedUser">The updated user data object sent from the frontend.</param>
+        /// <returns>Returns 200 OK with a success message or an appropriate error code.</returns>
         [HttpPut("{id}")]
         public async Task<IActionResult> PutUser(int id, [FromBody] User updatedUser)
         {
-            // Validate that the ID in the route matches the ID in the request body
+            // Security check: Ensure the ID in the URL matches the UserId in the request body
             if (id != updatedUser.UserId)
             {
-                return BadRequest(new { message = "User ID mismatch." });
+                return BadRequest(new { message = "Request mismatch: User ID in URL and body must be the same." });
             }
 
-            // Find the existing user entity to update
+            // Retrieve the existing user entity from the database context
             var user = await _context.Users.FindAsync(id);
             if (user == null)
             {
-                return NotFound(new { message = "User not found." });
+                return NotFound(new { message = "Update failed: User record not found." });
             }
 
-            // --- MAPPING PROPERTIES: Synchronizing existing record with new data from frontend ---
+            // --- DATA MAPPING: Synchronizing the database record with modified values from frontend ---
             user.Firstname = updatedUser.Firstname;
             user.Lastname = updatedUser.Lastname;
             user.Email = updatedUser.Email;
-            user.Location = updatedUser.Location; // Ensure location is updated
-            user.Industry = updatedUser.Industry; // Ensure industry is updated
+            user.Location = updatedUser.Location; // Updates the geographical location
+            user.Industry = updatedUser.Industry; // Updates the professional industry sector
 
-            // Mark the entity state as Modified for Entity Framework change tracking
+            // Inform Entity Framework that the state of this entity has been modified
             _context.Entry(user).State = EntityState.Modified;
 
             try
             {
-                // Commit changes asynchronously to the SQL Server database
+                // Save all pending changes to the SQL database
                 await _context.SaveChangesAsync();
             }
             catch (DbUpdateConcurrencyException)
             {
-                // Handle cases where the record might have been deleted or changed by another process
-                if (!UserExists(id)) return NotFound();
-                else throw;
+                // Handle cases where multiple users might be editing the same record simultaneously
+                if (!UserExists(id))
+                {
+                    return NotFound(new { message = "Update error: User no longer exists." });
+                }
+                else
+                {
+                    throw; // Re-throw the exception if it's a different concurrency issue
+                }
             }
 
-            // Return success response with the updated user data
-            return Ok(new { message = "Profile updated successfully!", user });
+            // Return success response with a JSON object for frontend confirmation
+            return Ok(new { message = "Profile updated successfully!", updatedData = user });
         }
 
         /// <summary>
-        /// Internal helper method to check if a user exists in the database.
+        /// Helper Method: Checks the database to see if a specific user exists.
         /// </summary>
-        /// <param name="id">The unique ID of the user.</param>
-        /// <returns>True if the user exists, otherwise false.</returns>
+        /// <param name="id">The ID of the user to check.</param>
+        /// <returns>True if the user exists; otherwise, false.</returns>
         private bool UserExists(int id)
         {
             return _context.Users.Any(e => e.UserId == id);
