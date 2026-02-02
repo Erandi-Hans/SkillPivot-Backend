@@ -8,7 +8,8 @@ var builder = WebApplication.CreateBuilder(args);
 /**
  * Configure Controllers and JSON options.
  * Setting PropertyNamingPolicy to null ensures that the JSON keys 
- * match the exact casing of your C# Model properties (e.g., "Status" stays "Status").
+ * match the exact casing of your C# Model properties (e.g., "CompanyName" stays "CompanyName").
+ * This is crucial for matching the casing in your React frontend state.
  */
 builder.Services.AddControllers()
     .AddJsonOptions(options =>
@@ -16,18 +17,21 @@ builder.Services.AddControllers()
         options.JsonSerializerOptions.PropertyNamingPolicy = null;
     });
 
-// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
+// Swagger/OpenAPI configuration for API documentation and testing
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-// Configure Entity Framework Core with SQL Server using the connection string from appsettings.json
+/**
+ * Configure Entity Framework Core with SQL Server.
+ * Uses the connection string defined as 'DefaultConnection' in appsettings.json.
+ */
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 
 /**
  * CORS (Cross-Origin Resource Sharing) Configuration.
- * This allows your React frontend (running on localhost:5173) to securely 
- * communicate with this API.
+ * Essential for allowing your Vite/React application (http://localhost:5173) 
+ * to make requests to this API (https://localhost:7118).
  */
 builder.Services.AddCors(options =>
 {
@@ -43,7 +47,8 @@ var app = builder.Build();
 
 /**
  * Swagger UI Configuration.
- * Only enabled in development mode to help test the API endpoints easily.
+ * Enabled in Development to provide a visual interface for testing API endpoints.
+ * Setting RoutePrefix to empty makes Swagger the default landing page.
  */
 if (app.Environment.IsDevelopment())
 {
@@ -51,24 +56,36 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI(options =>
     {
         options.SwaggerEndpoint("/swagger/v1/swagger.json", "SkillPivotlk API v1");
-        options.RoutePrefix = string.Empty; // Makes Swagger the root page (http://localhost:7118/)
+        options.RoutePrefix = string.Empty;
     });
 }
 
-// Global Middleware
+// Enable HTTPS redirection to ensure secure communication
+app.UseHttpsRedirection();
+
+/**
+ * Static Files Middleware.
+ * Required to serve uploaded company logos or images stored in the 'wwwroot' folder.
+ */
+app.UseStaticFiles();
+
+// Routing Middleware
 app.UseRouting();
 
 /**
- * CORS Middleware must be placed:
- * 1. After UseRouting
- * 2. Before UseAuthorization and MapControllers
+ * CORS Middleware implementation.
+ * Must be placed after UseRouting and before UseAuthorization.
  */
 app.UseCors("AllowReactApp");
 
-app.UseAuthentication(); // Recommended to add if you handle Login/Auth
+/**
+ * Authentication and Authorization Middleware.
+ * Secures endpoints and manages user roles (e.g., Hiring Manager, Admin).
+ */
+app.UseAuthentication();
 app.UseAuthorization();
 
-// Map controller routes to the request pipeline
+// Map controller routes to the request pipeline based on [Route("api/[controller]")]
 app.MapControllers();
 
 app.Run();

@@ -124,6 +124,103 @@
     "ReturnTypes": []
   },
   {
+    "ContainingType": "SkillPivotAPI.Controllers.CompaniesController",
+    "Method": "GetCompany",
+    "RelativePath": "api/Companies/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "SkillPivotAPI.Models.Company",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "SkillPivotAPI.Controllers.CompaniesController",
+    "Method": "PutCompany",
+    "RelativePath": "api/Companies/{id}",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "CompanyId",
+        "Type": "System.Int32",
+        "IsRequired": false
+      },
+      {
+        "Name": "CompanyName",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "ContactEmail",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "Industry",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "Website",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "Description",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "Location",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "IsVerified",
+        "Type": "System.Boolean",
+        "IsRequired": false
+      },
+      {
+        "Name": "RegisteredDate",
+        "Type": "System.DateTime",
+        "IsRequired": false
+      },
+      {
+        "Name": "JobPosts",
+        "Type": "System.Collections.Generic.ICollection\u00601[[SkillPivotAPI.Models.JobPost, SkillPivotAPI, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "IsRequired": false
+      },
+      {
+        "Name": "Logo",
+        "Type": "Microsoft.AspNetCore.Http.IFormFile",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "SkillPivotAPI.Controllers.JobPostsController",
     "Method": "GetJobPosts",
     "RelativePath": "api/JobPosts",
