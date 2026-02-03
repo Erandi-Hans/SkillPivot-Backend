@@ -69,7 +69,7 @@ namespace SkillPivotAPI.Controllers
             });
         }
 
-        // --- 2. REGISTER: Working normally ---
+        // --- 2. REGISTER: Modified to include Student profile creation ---
         [HttpPost("register")]
         public async Task<IActionResult> Register([FromBody] User user)
         {
@@ -77,8 +77,25 @@ namespace SkillPivotAPI.Controllers
             {
                 return BadRequest(new { message = "Email already registered." });
             }
+
             _context.Users.Add(user);
             await _context.SaveChangesAsync();
+
+            // NEW LOGIC: If role is Student or Internship Seeker, create a record in Students table
+            if (user.Role == "Internship Seekers" || user.Role == "Student")
+            {
+                var studentProfile = new Student
+                {
+                    UserId = user.UserId,
+                    University = "",
+                    Degree = "",
+                    GPA = "",
+                    Skills = ""
+                };
+                _context.Students.Add(studentProfile);
+                await _context.SaveChangesAsync();
+            }
+
             return Ok(new { message = "Registration successful!" });
         }
 
