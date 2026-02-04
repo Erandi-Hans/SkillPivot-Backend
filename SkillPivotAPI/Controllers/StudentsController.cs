@@ -10,19 +10,19 @@ namespace SkillPivotAPI.Controllers
     public class StudentsController : ControllerBase
     {
         private readonly ApplicationDbContext _context;
+        private readonly IWebHostEnvironment _environment;
 
-        public StudentsController(ApplicationDbContext context)
+        public StudentsController(ApplicationDbContext context, IWebHostEnvironment environment)
         {
             _context = context;
+            _environment = environment;
         }
 
-        // 1. GET: Student profile by UserId
+        // 1. GET: Fetch student profile details by UserId
         [HttpGet("user/{userId}")]
         public async Task<ActionResult<Student>> GetStudentByUserId(int userId)
         {
-            // .AsNoTracking() පාවිච්චි කිරීමෙන් performance වැඩි වෙනවා
             var student = await _context.Students.AsNoTracking().FirstOrDefaultAsync(s => s.UserId == userId);
-
             if (student == null)
             {
                 return NotFound(new { message = "Student profile not found." });
@@ -30,7 +30,7 @@ namespace SkillPivotAPI.Controllers
             return Ok(student);
         }
 
-        // 2. POST: Create a new student profile
+        // 2. POST: Initialize a new student profile record
         [HttpPost]
         public async Task<ActionResult<Student>> PostStudent([FromBody] Student student)
         {
@@ -42,7 +42,7 @@ namespace SkillPivotAPI.Controllers
                 return Conflict(new { message = "A student profile already exists for this user." });
             }
 
-            // අගයන් null නම් හිස් string එකක් දාන්න (Manual SQL table එකේ null allow කරලා නැති නිසා)
+            // Initialize non-nullable fields with empty strings to prevent database null constraint errors
             student.University ??= "";
             student.Degree ??= "";
             student.GPA ??= "";
@@ -56,37 +56,68 @@ namespace SkillPivotAPI.Controllers
             return CreatedAtAction(nameof(GetStudentByUserId), new { userId = student.UserId }, student);
         }
 
-        // 3. PUT: Update student profile
+        // 3. PUT: Update comprehensive student profile information
         [HttpPut("user/{userId}")]
         public async Task<IActionResult> UpdateStudentProfile(int userId, [FromBody] Student studentData)
         {
             if (studentData == null) return BadRequest();
 
             var existingStudent = await _context.Students.FirstOrDefaultAsync(s => s.UserId == userId);
-
             if (existingStudent == null)
             {
                 return NotFound(new { message = "Student profile not found." });
             }
 
-            // දත්ත Update කිරීම
+            // Map updated values to the existing entity
             existingStudent.University = studentData.University ?? "";
             existingStudent.Degree = studentData.Degree ?? "";
             existingStudent.GPA = studentData.GPA ?? "";
             existingStudent.Skills = studentData.Skills ?? "";
             existingStudent.Gender = studentData.Gender ?? "";
-            existingStudent.NicDocumentPath = studentData.NicDocumentPath ?? existingStudent.NicDocumentPath;
-            existingStudent.IsVerified = studentData.IsVerified;
+
+            // Keep existing path if a new one is not provided in the standard update
+            existingStudent.NicDocumentPath = string.IsNullOrEmpty(studentData.NicDocumentPath)
+                ? existingStudent.NicDocumentPath
+                : studentData.NicDocumentPath;
 
             try
             {
                 await _context.SaveChangesAsync();
-                return Ok(new { message = "Profile updated successfully!" });
+                return Ok(new { message = "Student profile updated successfully!" });
             }
             catch (Exception ex)
             {
-                return StatusCode(500, new { message = "Error updating database", error = ex.Message });
+                return StatusCode(500, new { message = "Database synchronization error", error = ex.Message });
             }
+        }
+
+        // 4. POST: Handle Identity Document Upload (NIC/Student ID)
+        [HttpPost("upload-nic/{userId}")]
+        public async Task<IActionResult> UploadNic(int userId, IFormFile file)
+        {
+            if (file == null || file.Length == 0) return BadRequest("No file uploaded.");
+
+            var student = await _context.Students.FirstOrDefaultAsync(s => s.UserId == userId);
+            if (student == null) return NotFound("Student profile not found.");
+
+            // Ensure the upload directory exists
+            var uploadsFolder = Path.Combine(_environment.WebRootPath, "uploads", "nic");
+            if (!Directory.Exists(uploadsFolder)) Directory.CreateDirectory(uploadsFolder);
+
+            // Generate a unique filename to prevent overwriting
+            var fileName = $"{userId}_NIC_{Guid.NewGuid()}{Path.GetExtension(file.FileName)}";
+            var filePath = Path.Combine(uploadsFolder, fileName);
+
+            using (var stream = new FileStream(filePath, FileMode.Create))
+            {
+                await file.CopyToAsync(stream);
+            }
+
+            // Save the relative path in the database for future retrieval
+            student.NicDocumentPath = $"/uploads/nic/{fileName}";
+            await _context.SaveChangesAsync();
+
+            return Ok(new { message = "File uploaded successfully", path = student.NicDocumentPath });
         }
     }
 }

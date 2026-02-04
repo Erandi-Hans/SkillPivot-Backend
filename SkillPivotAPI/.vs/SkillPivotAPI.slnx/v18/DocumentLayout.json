@@ -3,12 +3,24 @@
   "WorkspaceRootPath": "D:\\backend\\New folder\\SkillPivotAPI\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{5DAE86C7-E4E5-A750-CCF2-FC41616CC2F2}|SkillPivotAPI.csproj|d:\\backend\\new folder\\skillpivotapi\\data\\authcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{5DAE86C7-E4E5-A750-CCF2-FC41616CC2F2}|SkillPivotAPI.csproj|solutionrelative:data\\authcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{5DAE86C7-E4E5-A750-CCF2-FC41616CC2F2}|SkillPivotAPI.csproj|d:\\backend\\new folder\\skillpivotapi\\controllers\\studentscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{5DAE86C7-E4E5-A750-CCF2-FC41616CC2F2}|SkillPivotAPI.csproj|solutionrelative:controllers\\studentscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{5DAE86C7-E4E5-A750-CCF2-FC41616CC2F2}|SkillPivotAPI.csproj|d:\\backend\\new folder\\skillpivotapi\\models\\student.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{5DAE86C7-E4E5-A750-CCF2-FC41616CC2F2}|SkillPivotAPI.csproj|solutionrelative:models\\student.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{5DAE86C7-E4E5-A750-CCF2-FC41616CC2F2}|SkillPivotAPI.csproj|d:\\backend\\new folder\\skillpivotapi\\data\\userscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{5DAE86C7-E4E5-A750-CCF2-FC41616CC2F2}|SkillPivotAPI.csproj|solutionrelative:data\\userscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{5DAE86C7-E4E5-A750-CCF2-FC41616CC2F2}|SkillPivotAPI.csproj|d:\\backend\\new folder\\skillpivotapi\\models\\user.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{5DAE86C7-E4E5-A750-CCF2-FC41616CC2F2}|SkillPivotAPI.csproj|solutionrelative:models\\user.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{5DAE86C7-E4E5-A750-CCF2-FC41616CC2F2}|SkillPivotAPI.csproj|d:\\backend\\new folder\\skillpivotapi\\data\\authcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{5DAE86C7-E4E5-A750-CCF2-FC41616CC2F2}|SkillPivotAPI.csproj|solutionrelative:data\\authcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{5DAE86C7-E4E5-A750-CCF2-FC41616CC2F2}|SkillPivotAPI.csproj|d:\\backend\\new folder\\skillpivotapi\\data\\loginrequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -23,10 +35,6 @@
       "RelativeMoniker": "D:0:0:{5DAE86C7-E4E5-A750-CCF2-FC41616CC2F2}|SkillPivotAPI.csproj|solutionrelative:data\\applicationdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{5DAE86C7-E4E5-A750-CCF2-FC41616CC2F2}|SkillPivotAPI.csproj|d:\\backend\\new folder\\skillpivotapi\\controllers\\studentscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{5DAE86C7-E4E5-A750-CCF2-FC41616CC2F2}|SkillPivotAPI.csproj|solutionrelative:controllers\\studentscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{5DAE86C7-E4E5-A750-CCF2-FC41616CC2F2}|SkillPivotAPI.csproj|d:\\backend\\new folder\\skillpivotapi\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{5DAE86C7-E4E5-A750-CCF2-FC41616CC2F2}|SkillPivotAPI.csproj|solutionrelative:program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
@@ -37,14 +45,6 @@
     {
       "AbsoluteMoniker": "D:0:0:{5DAE86C7-E4E5-A750-CCF2-FC41616CC2F2}|SkillPivotAPI.csproj|d:\\backend\\new folder\\skillpivotapi\\models\\googleloginrequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{5DAE86C7-E4E5-A750-CCF2-FC41616CC2F2}|SkillPivotAPI.csproj|solutionrelative:models\\googleloginrequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{5DAE86C7-E4E5-A750-CCF2-FC41616CC2F2}|SkillPivotAPI.csproj|d:\\backend\\new folder\\skillpivotapi\\data\\userscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{5DAE86C7-E4E5-A750-CCF2-FC41616CC2F2}|SkillPivotAPI.csproj|solutionrelative:data\\userscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{5DAE86C7-E4E5-A750-CCF2-FC41616CC2F2}|SkillPivotAPI.csproj|d:\\backend\\new folder\\skillpivotapi\\models\\user.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{5DAE86C7-E4E5-A750-CCF2-FC41616CC2F2}|SkillPivotAPI.csproj|solutionrelative:models\\user.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{5DAE86C7-E4E5-A750-CCF2-FC41616CC2F2}|SkillPivotAPI.csproj|d:\\backend\\new folder\\skillpivotapi\\models\\company.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -90,20 +90,21 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 6,
+          "SelectedChildIndex": 4,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 10,
+              "DocumentIndex": 3,
               "Title": "User.cs",
               "DocumentMoniker": "D:\\backend\\New folder\\SkillPivotAPI\\Models\\User.cs",
               "RelativeDocumentMoniker": "Models\\User.cs",
               "ToolTip": "D:\\backend\\New folder\\SkillPivotAPI\\Models\\User.cs",
               "RelativeToolTip": "Models\\User.cs",
-              "ViewState": "AgIAAAoAAAAAAAAAAAAQwCIAAAABAAAAAAAAAA==",
+              "ViewState": "AgIAAA8AAAAAAAAAAAAswCIAAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-01-04T02:11:12.565Z",
-              "IsPinned": true
+              "IsPinned": true,
+              "EditorCaption": ""
             },
             {
               "$type": "Bookmark",
@@ -111,43 +112,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "Student.cs",
-              "DocumentMoniker": "D:\\backend\\New folder\\SkillPivotAPI\\Models\\Student.cs",
-              "RelativeDocumentMoniker": "Models\\Student.cs",
-              "ToolTip": "D:\\backend\\New folder\\SkillPivotAPI\\Models\\Student.cs",
-              "RelativeToolTip": "Models\\Student.cs",
-              "ViewState": "AgIAAAIAAAAAAAAAAAAxwA4AAAABAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-02-02T15:31:21.684Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "Program.cs",
-              "DocumentMoniker": "D:\\backend\\New folder\\SkillPivotAPI\\Program.cs",
-              "RelativeDocumentMoniker": "Program.cs",
-              "ToolTip": "D:\\backend\\New folder\\SkillPivotAPI\\Program.cs",
-              "RelativeToolTip": "Program.cs",
-              "ViewState": "AgIAAE4AAAAAAAAAAAAqwFoAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-12-30T15:59:22.953Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "SkillPivotAPI.csproj",
-              "DocumentMoniker": "D:\\backend\\New folder\\SkillPivotAPI\\SkillPivotAPI.csproj",
-              "RelativeDocumentMoniker": "SkillPivotAPI.csproj",
-              "ToolTip": "D:\\backend\\New folder\\SkillPivotAPI\\SkillPivotAPI.csproj",
-              "RelativeToolTip": "SkillPivotAPI.csproj",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAABWAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
-              "WhenOpened": "2025-12-30T15:57:04.544Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 5,
               "Title": "LoginRequest.cs",
               "DocumentMoniker": "D:\\backend\\New folder\\SkillPivotAPI\\Data\\LoginRequest.cs",
               "RelativeDocumentMoniker": "Data\\LoginRequest.cs",
@@ -159,7 +124,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 4,
               "Title": "AuthController.cs",
               "DocumentMoniker": "D:\\backend\\New folder\\SkillPivotAPI\\Data\\AuthController.cs",
               "RelativeDocumentMoniker": "Data\\AuthController.cs",
@@ -172,7 +137,70 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 0,
+              "Title": "StudentsController.cs",
+              "DocumentMoniker": "D:\\backend\\New folder\\SkillPivotAPI\\Controllers\\StudentsController.cs",
+              "RelativeDocumentMoniker": "Controllers\\StudentsController.cs",
+              "ToolTip": "D:\\backend\\New folder\\SkillPivotAPI\\Controllers\\StudentsController.cs",
+              "RelativeToolTip": "Controllers\\StudentsController.cs",
+              "ViewState": "AgIAAEcAAAAAAAAAAADwv1sAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-03T05:27:23.449Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Student.cs",
+              "DocumentMoniker": "D:\\backend\\New folder\\SkillPivotAPI\\Models\\Student.cs",
+              "RelativeDocumentMoniker": "Models\\Student.cs",
+              "ToolTip": "D:\\backend\\New folder\\SkillPivotAPI\\Models\\Student.cs",
+              "RelativeToolTip": "Models\\Student.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABQAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-02T15:31:21.684Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "UsersController.cs",
+              "DocumentMoniker": "D:\\backend\\New folder\\SkillPivotAPI\\Data\\UsersController.cs",
+              "RelativeDocumentMoniker": "Data\\UsersController.cs",
+              "ToolTip": "D:\\backend\\New folder\\SkillPivotAPI\\Data\\UsersController.cs",
+              "RelativeToolTip": "Data\\UsersController.cs",
+              "ViewState": "AgIAAFQAAAAAAAAAAAAmwG0AAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-02T06:13:14.013Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "SkillPivotAPI.csproj",
+              "DocumentMoniker": "D:\\backend\\New folder\\SkillPivotAPI\\SkillPivotAPI.csproj",
+              "RelativeDocumentMoniker": "SkillPivotAPI.csproj",
+              "ToolTip": "D:\\backend\\New folder\\SkillPivotAPI\\SkillPivotAPI.csproj",
+              "RelativeToolTip": "SkillPivotAPI.csproj",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAABWAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
+              "WhenOpened": "2025-12-30T15:57:04.544Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "Program.cs",
+              "DocumentMoniker": "D:\\backend\\New folder\\SkillPivotAPI\\Program.cs",
+              "RelativeDocumentMoniker": "Program.cs",
+              "ToolTip": "D:\\backend\\New folder\\SkillPivotAPI\\Program.cs",
+              "RelativeToolTip": "Program.cs",
+              "ViewState": "AgIAAE4AAAAAAAAAAAAqwFoAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-30T15:59:22.953Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
               "Title": "ApplicationDbContext.cs",
               "DocumentMoniker": "D:\\backend\\New folder\\SkillPivotAPI\\Data\\ApplicationDbContext.cs",
               "RelativeDocumentMoniker": "Data\\ApplicationDbContext.cs",
@@ -184,7 +212,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
+              "DocumentIndex": 10,
               "Title": "GoogleLoginRequest.cs",
               "DocumentMoniker": "D:\\backend\\New folder\\SkillPivotAPI\\Models\\GoogleLoginRequest.cs",
               "RelativeDocumentMoniker": "Models\\GoogleLoginRequest.cs",
@@ -196,19 +224,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "StudentsController.cs",
-              "DocumentMoniker": "D:\\backend\\New folder\\SkillPivotAPI\\Controllers\\StudentsController.cs",
-              "RelativeDocumentMoniker": "Controllers\\StudentsController.cs",
-              "ToolTip": "D:\\backend\\New folder\\SkillPivotAPI\\Controllers\\StudentsController.cs",
-              "RelativeToolTip": "Controllers\\StudentsController.cs",
-              "ViewState": "AgIAACsAAAAAAAAAAAAmwEQAAAABAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-02-03T05:27:23.449Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 9,
               "Title": "CompaniesController.cs",
               "DocumentMoniker": "D:\\backend\\New folder\\SkillPivotAPI\\Controllers\\CompaniesController.cs",
               "RelativeDocumentMoniker": "Controllers\\CompaniesController.cs",
@@ -217,18 +233,6 @@
               "ViewState": "AgIAAE0AAAAAAAAAAAAgwGAAAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-02-02T04:56:09.107Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 9,
-              "Title": "UsersController.cs",
-              "DocumentMoniker": "D:\\backend\\New folder\\SkillPivotAPI\\Data\\UsersController.cs",
-              "RelativeDocumentMoniker": "Data\\UsersController.cs",
-              "ToolTip": "D:\\backend\\New folder\\SkillPivotAPI\\Data\\UsersController.cs",
-              "RelativeToolTip": "Data\\UsersController.cs",
-              "ViewState": "AgIAAFQAAAAAAAAAAAAmwG0AAAABAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-02-02T06:13:14.013Z"
             },
             {
               "$type": "Document",
