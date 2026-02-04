@@ -1,5 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using SkillPivotAPI.Models; 
+using SkillPivotAPI.Models;
 
 namespace SkillPivotAPI.Data
 {
@@ -7,11 +7,11 @@ namespace SkillPivotAPI.Data
     {
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : base(options) { }
 
-        
         public DbSet<User> Users { get; set; }
         public DbSet<Company> Companies { get; set; }
         public DbSet<JobPost> JobPosts { get; set; }
 
+        
         public DbSet<Student> Students { get; set; }
     }
 }

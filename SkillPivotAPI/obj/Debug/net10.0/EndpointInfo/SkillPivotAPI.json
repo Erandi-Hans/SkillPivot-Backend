@@ -514,6 +514,134 @@
         }
       }
     },
+    "/api/Students/user/{userId}": {
+      "get": {
+        "tags": [
+          "Students"
+        ],
+        "parameters": [
+          {
+            "name": "userId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/Student"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Student"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Student"
+                }
+              }
+            }
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "Students"
+        ],
+        "parameters": [
+          {
+            "name": "userId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Student"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Student"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/Student"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Students": {
+      "post": {
+        "tags": [
+          "Students"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Student"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Student"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/Student"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/Student"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Student"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Student"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/api/Users/{id}": {
       "get": {
         "tags": [
@@ -719,6 +847,47 @@
         },
         "additionalProperties": false
       },
+      "Student": {
+        "type": "object",
+        "properties": {
+          "StudentId": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "UserId": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "University": {
+            "type": "string",
+            "nullable": true
+          },
+          "Degree": {
+            "type": "string",
+            "nullable": true
+          },
+          "GPA": {
+            "type": "string",
+            "nullable": true
+          },
+          "Skills": {
+            "type": "string",
+            "nullable": true
+          },
+          "Gender": {
+            "type": "string",
+            "nullable": true
+          },
+          "IsVerified": {
+            "type": "boolean"
+          },
+          "NicDocumentPath": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
       "User": {
         "required": [
           "Email",
@@ -791,6 +960,9 @@
     },
     {
       "name": "JobPosts"
+    },
+    {
+      "name": "Students"
     },
     {
       "name": "Users"

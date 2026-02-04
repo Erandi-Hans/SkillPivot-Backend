@@ -294,6 +294,79 @@
     "ReturnTypes": []
   },
   {
+    "ContainingType": "SkillPivotAPI.Controllers.StudentsController",
+    "Method": "PostStudent",
+    "RelativePath": "api/Students",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "student",
+        "Type": "SkillPivotAPI.Models.Student",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "SkillPivotAPI.Models.Student",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "SkillPivotAPI.Controllers.StudentsController",
+    "Method": "GetStudentByUserId",
+    "RelativePath": "api/Students/user/{userId}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "userId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "SkillPivotAPI.Models.Student",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "SkillPivotAPI.Controllers.StudentsController",
+    "Method": "UpdateStudentProfile",
+    "RelativePath": "api/Students/user/{userId}",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "userId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "studentData",
+        "Type": "SkillPivotAPI.Models.Student",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "SkillPivotAPI.Controllers.UsersController",
     "Method": "GetUser",
     "RelativePath": "api/Users/{id}",
