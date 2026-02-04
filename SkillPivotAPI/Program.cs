@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using SkillPivotAPI.Data;
+using Microsoft.Extensions.FileProviders;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -8,8 +9,7 @@ var builder = WebApplication.CreateBuilder(args);
 /**
  * Configure Controllers and JSON options.
  * Setting PropertyNamingPolicy to null ensures that the JSON keys 
- * match the exact casing of your C# Model properties (e.g., "CompanyName" stays "CompanyName").
- * This is crucial for matching the casing in your React frontend state.
+ * match the exact casing of your C# Model properties.
  */
 builder.Services.AddControllers()
     .AddJsonOptions(options =>
@@ -17,21 +17,17 @@ builder.Services.AddControllers()
         options.JsonSerializerOptions.PropertyNamingPolicy = null;
     });
 
-// Swagger/OpenAPI configuration for API documentation and testing
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 /**
  * Configure Entity Framework Core with SQL Server.
- * Uses the connection string defined as 'DefaultConnection' in appsettings.json.
  */
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 
 /**
- * CORS (Cross-Origin Resource Sharing) Configuration.
- * Essential for allowing your Vite/React application (http://localhost:5173) 
- * to make requests to this API (https://localhost:7118).
+ * CORS Configuration to allow requests from your Vite/React app.
  */
 builder.Services.AddCors(options =>
 {
@@ -45,11 +41,6 @@ var app = builder.Build();
 
 // --- 2. MIDDLEWARE PIPELINE ---
 
-/**
- * Swagger UI Configuration.
- * Enabled in Development to provide a visual interface for testing API endpoints.
- * Setting RoutePrefix to empty makes Swagger the default landing page.
- */
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
@@ -60,32 +51,32 @@ if (app.Environment.IsDevelopment())
     });
 }
 
-// Enable HTTPS redirection to ensure secure communication
 app.UseHttpsRedirection();
 
 /**
  * Static Files Middleware.
- * Required to serve uploaded company logos or images stored in the 'wwwroot' folder.
+ * Standard call to serve files from wwwroot.
  */
 app.UseStaticFiles();
 
-// Routing Middleware
-app.UseRouting();
-
 /**
- * CORS Middleware implementation.
- * Must be placed after UseRouting and before UseAuthorization.
+ * Custom Static File Configuration for Uploads.
+ * This ensures that even if the default wwwroot mapping has issues,
+ * the /uploads route will specifically look into the correct folder.
  */
+app.UseStaticFiles(new StaticFileOptions
+{
+    FileProvider = new PhysicalFileProvider(
+        Path.Combine(builder.Environment.ContentRootPath, "wwwroot", "uploads")),
+    RequestPath = "/uploads"
+});
+
+app.UseRouting();
 app.UseCors("AllowReactApp");
 
-/**
- * Authentication and Authorization Middleware.
- * Secures endpoints and manages user roles (e.g., Hiring Manager, Admin).
- */
 app.UseAuthentication();
 app.UseAuthorization();
 
-// Map controller routes to the request pipeline based on [Route("api/[controller]")]
 app.MapControllers();
 
 app.Run();

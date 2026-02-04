@@ -31,5 +31,8 @@ namespace SkillPivotAPI.Models
         // Profile details (Optional but recommended based on your UI)
         public string? Location { get; set; }
         public string? Industry { get; set; }
+
+        // ProfilePicture property to match the database column
+        public string? ProfilePicture { get; set; }
     }
 }

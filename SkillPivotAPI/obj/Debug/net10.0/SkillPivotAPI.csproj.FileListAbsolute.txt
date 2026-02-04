@@ -46,6 +46,7 @@ D:\backend\New folder\SkillPivotAPI\bin\Debug\net10.0\BuildHost-netcore\zh-Hans\
 D:\backend\New folder\SkillPivotAPI\bin\Debug\net10.0\BuildHost-netcore\zh-Hant\System.CommandLine.resources.dll
 D:\backend\New folder\SkillPivotAPI\bin\Debug\net10.0\appsettings.Development.json
 D:\backend\New folder\SkillPivotAPI\bin\Debug\net10.0\appsettings.json
+D:\backend\New folder\SkillPivotAPI\bin\Debug\net10.0\SkillPivotAPI.staticwebassets.runtime.json
 D:\backend\New folder\SkillPivotAPI\bin\Debug\net10.0\SkillPivotAPI.staticwebassets.endpoints.json
 D:\backend\New folder\SkillPivotAPI\bin\Debug\net10.0\SkillPivotAPI.exe
 D:\backend\New folder\SkillPivotAPI\bin\Debug\net10.0\SkillPivotAPI.deps.json
