@@ -6,32 +6,39 @@ namespace SkillPivotAPI.Models
 {
     public class JobPost
     {
-        [Key] // Primary Key for the JobPost table
+        [Key]
         public int JobPostId { get; set; }
 
-        [Required] // Ensures the Job Title is not empty
+        [Required]
         public string JobTitle { get; set; } = string.Empty;
 
         [Required]
         public string Description { get; set; } = string.Empty;
 
+        // Matches 'stack' in frontend logic for filtering
         public string TechnologyStack { get; set; } = string.Empty;
 
-        public string JobType { get; set; } = string.Empty; // e.g., On-site, Remote, Hybrid
+        public string JobType { get; set; } = string.Empty;
 
-        public string JobRole { get; set; } = "Intern"; // Default role is Intern
+        public string JobRole { get; set; } = "Intern";
 
-        public string Status { get; set; } = "Active"; // e.g., Active, Closed
+        public string Status { get; set; } = "Active";
 
         public DateTime PostedDate { get; set; } = DateTime.Now;
 
-        // Foreign Key for Company
+        // Properties used for filtering in React frontend. 
+        // Defined as nullable to handle potential NULL values in the database safely.
+        public string? Category { get; set; } = string.Empty;
+        public string? SubCategory { get; set; } = string.Empty;
+        public string? CompanyName { get; set; } = string.Empty;
+        public string? Location { get; set; } = string.Empty;
+
         [Required]
         public int CompanyId { get; set; }
 
-        // Navigation Property: Link to the Company model
         [ForeignKey("CompanyId")]
-        [JsonIgnore] // Prevents object cycles when returning JSON data
+        // Critical: Prevents infinite loops/circular references during JSON serialization
+        [JsonIgnore]
         public virtual Company? Company { get; set; }
     }
 }

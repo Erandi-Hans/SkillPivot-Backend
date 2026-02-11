@@ -384,6 +384,47 @@
         }
       }
     },
+    "/api/JobApplications": {
+      "get": {
+        "tags": [
+          "JobApplications"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "JobApplications"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/JobApplication"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/JobApplication"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/JobApplication"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
     "/api/JobPosts": {
       "get": {
         "tags": [
@@ -685,6 +726,44 @@
         }
       }
     },
+    "/api/Users": {
+      "get": {
+        "tags": [
+          "Users"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/User"
+                  }
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/User"
+                  }
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/User"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/api/Users/{id}": {
       "get": {
         "tags": [
@@ -738,6 +817,58 @@
               "format": "int32"
             }
           }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/User"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/User"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/User"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Users"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Users/register-admin": {
+      "post": {
+        "tags": [
+          "Users"
         ],
         "requestBody": {
           "content": {
@@ -921,6 +1052,39 @@
         },
         "additionalProperties": false
       },
+      "JobApplication": {
+        "required": [
+          "AppliedDate",
+          "JobPostId",
+          "Status",
+          "StudentId"
+        ],
+        "type": "object",
+        "properties": {
+          "ApplicationId": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "JobPostId": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "StudentId": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "AppliedDate": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "Status": {
+            "maxLength": 50,
+            "minLength": 0,
+            "type": "string"
+          }
+        },
+        "additionalProperties": false
+      },
       "JobPost": {
         "required": [
           "CompanyId",
@@ -960,6 +1124,22 @@
           "PostedDate": {
             "type": "string",
             "format": "date-time"
+          },
+          "Category": {
+            "type": "string",
+            "nullable": true
+          },
+          "SubCategory": {
+            "type": "string",
+            "nullable": true
+          },
+          "CompanyName": {
+            "type": "string",
+            "nullable": true
+          },
+          "Location": {
+            "type": "string",
+            "nullable": true
           },
           "CompanyId": {
             "type": "integer",
@@ -1096,6 +1276,9 @@
     },
     {
       "name": "Companies"
+    },
+    {
+      "name": "JobApplications"
     },
     {
       "name": "JobPosts"

@@ -1,8 +1,8 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using SkillPivotAPI.Data; // Access to ApplicationDbContext
-using SkillPivotAPI.Models; // Access to JobPost Model
+using SkillPivotAPI.Data;
+using SkillPivotAPI.Models;
 
 namespace SkillPivotAPI.Controllers
 {
@@ -12,37 +12,40 @@ namespace SkillPivotAPI.Controllers
     {
         private readonly ApplicationDbContext _context;
 
-        // Constructor: Injecting the Database Context
         public JobPostsController(ApplicationDbContext context)
         {
             _context = context;
         }
 
         /// <summary>
-        /// Retrieves all job posts from the database.
+        /// Retrieves all job posts from the database including related company data.
         /// </summary>
         [HttpGet]
         public async Task<ActionResult<IEnumerable<JobPost>>> GetJobPosts()
         {
             try
             {
+                // Fetch jobs from database
                 var jobs = await _context.JobPosts.ToListAsync();
+
+                if (jobs == null || !jobs.Any())
+                {
+                    return Ok(new List<JobPost>()); // Return empty list instead of 404 to avoid frontend filter errors
+                }
+
                 return Ok(jobs);
             }
             catch (Exception ex)
             {
-                return StatusCode(500, new { message = "Error retrieving data.", error = ex.Message });
+                // Return detailed error message for debugging
+                return StatusCode(500, new { message = "Database retrieval error.", error = ex.Message });
             }
         }
 
-        /// <summary>
-        /// Creates a new job post in the database.
-        /// </summary>
         [HttpPost]
         public async Task<IActionResult> PostJob([FromBody] JobPost jobPost)
         {
             if (!ModelState.IsValid) return BadRequest(ModelState);
-            if (jobPost == null) return BadRequest(new { message = "Job data cannot be null." });
 
             try
             {
@@ -56,19 +59,10 @@ namespace SkillPivotAPI.Controllers
             }
         }
 
-        // --- අලුතින් එකතු කළ කොටස් ---
-
-        /// <summary>
-        /// Updates an existing job post.
-        /// Route: PUT /api/JobPosts/{id}
-        /// </summary>
         [HttpPut("{id}")]
         public async Task<IActionResult> PutJobPost(int id, [FromBody] JobPost jobPost)
         {
-            if (id != jobPost.JobPostId)
-            {
-                return BadRequest(new { message = "ID mismatch." });
-            }
+            if (id != jobPost.JobPostId) return BadRequest(new { message = "ID mismatch." });
 
             _context.Entry(jobPost).State = EntityState.Modified;
 
@@ -84,18 +78,11 @@ namespace SkillPivotAPI.Controllers
             }
         }
 
-        /// <summary>
-        /// Deletes a job post from the database.
-        /// Route: DELETE /api/JobPosts/{id}
-        /// </summary>
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteJobPost(int id)
         {
             var jobPost = await _context.JobPosts.FindAsync(id);
-            if (jobPost == null)
-            {
-                return NotFound(new { message = "Job not found." });
-            }
+            if (jobPost == null) return NotFound(new { message = "Job not found." });
 
             try
             {

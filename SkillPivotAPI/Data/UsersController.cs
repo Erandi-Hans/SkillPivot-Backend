@@ -10,15 +10,23 @@ namespace SkillPivotAPI.Controllers
     public class UsersController : ControllerBase
     {
         private readonly ApplicationDbContext _context;
-        private readonly IWebHostEnvironment _environment; // Added to handle server file paths
+        private readonly IWebHostEnvironment _environment;
 
-        /// <summary>
-        /// Constructor: Injects the ApplicationDbContext and IWebHostEnvironment.
-        /// </summary>
         public UsersController(ApplicationDbContext context, IWebHostEnvironment environment)
         {
             _context = context;
-            _environment = environment; // Injected for static file management
+            _environment = environment;
+        }
+
+        /// <summary>
+        /// HTTP GET: Retrieves all users from the database.
+        /// Useful for the Admin Management table to show Students and Companies.
+        /// </summary>
+        [HttpGet]
+        public async Task<ActionResult<IEnumerable<User>>> GetUsers()
+        {
+            // Returns the full list of users to be filtered on the frontend
+            return await _context.Users.ToListAsync();
         }
 
         /// <summary>
@@ -33,6 +41,28 @@ namespace SkillPivotAPI.Controllers
                 return NotFound(new { message = "User profile not found." });
             }
             return Ok(user);
+        }
+
+        /// <summary>
+        /// HTTP POST: Specifically for registering the system Administrator.
+        /// Use this to register the email: 2021icts083@stu.vau.ac.lk
+        /// </summary>
+        [HttpPost("register-admin")]
+        public async Task<IActionResult> RegisterAdmin([FromBody] User adminData)
+        {
+            // Check if the email is already registered to prevent duplicates
+            if (await _context.Users.AnyAsync(u => u.Email == adminData.Email))
+            {
+                return BadRequest(new { message = "Email is already registered." });
+            }
+
+            // Manually force the role to "Admin" for security
+            adminData.Role = "Admin";
+
+            _context.Users.Add(adminData);
+            await _context.SaveChangesAsync();
+
+            return Ok(new { message = "Admin account created successfully!" });
         }
 
         /// <summary>
@@ -70,10 +100,7 @@ namespace SkillPivotAPI.Controllers
                 {
                     return NotFound(new { message = "Update error: User no longer exists." });
                 }
-                else
-                {
-                    throw;
-                }
+                else { throw; }
             }
 
             return Ok(new { message = "Profile updated successfully!", updatedData = user });
@@ -105,10 +132,7 @@ namespace SkillPivotAPI.Controllers
 
         /// <summary>
         /// HTTP POST: Uploads and updates the user's profile picture.
-        /// Endpoint: POST api/Users/upload-image/{id}
         /// </summary>
-        /// <param name="id">User ID to associate the image with.</param>
-        /// <param name="profileImage">The image file sent from the frontend.</param>
         [HttpPost("upload-image/{id}")]
         public async Task<IActionResult> UploadImage(int id, IFormFile profileImage)
         {
@@ -117,26 +141,21 @@ namespace SkillPivotAPI.Controllers
                 return BadRequest(new { message = "No image file provided." });
             }
 
-            // Define the directory path where images will be stored
             string uploadsFolder = Path.Combine(_environment.WebRootPath, "uploads");
 
-            // Ensure the directory exists
             if (!Directory.Exists(uploadsFolder))
             {
                 Directory.CreateDirectory(uploadsFolder);
             }
 
-            // Generate a unique file name to prevent overwriting
             string uniqueFileName = $"profile_{id}_{Guid.NewGuid()}{Path.GetExtension(profileImage.FileName)}";
             string filePath = Path.Combine(uploadsFolder, uniqueFileName);
 
-            // Save the file to the physical storage (wwwroot/uploads)
             using (var stream = new FileStream(filePath, FileMode.Create))
             {
                 await profileImage.CopyToAsync(stream);
             }
 
-            // Retrieve the user from the database to update the ProfilePicture path
             var user = await _context.Users.FindAsync(id);
             if (user == null) return NotFound(new { message = "User not found." });
 
@@ -145,6 +164,25 @@ namespace SkillPivotAPI.Controllers
             await _context.SaveChangesAsync();
 
             return Ok(new { message = "Profile picture updated successfully!", fileName = uniqueFileName });
+        }
+
+        /// <summary>
+        /// HTTP DELETE: Permanently removes a user from the system.
+        /// Used by the Admin to delete spam or inactive accounts.
+        /// </summary>
+        [HttpDelete("{id}")]
+        public async Task<IActionResult> DeleteUser(int id)
+        {
+            var user = await _context.Users.FindAsync(id);
+            if (user == null)
+            {
+                return NotFound(new { message = "User not found." });
+            }
+
+            _context.Users.Remove(user);
+            await _context.SaveChangesAsync();
+
+            return Ok(new { message = "User deleted successfully." });
         }
 
         private bool UserExists(int id)
@@ -156,7 +194,7 @@ namespace SkillPivotAPI.Controllers
     public class ChangePasswordDto
     {
         public int UserId { get; set; }
-        public string CurrentPassword { get; set; }
-        public string NewPassword { get; set; }
+        public string CurrentPassword { get; set; } = string.Empty;
+        public string NewPassword { get; set; } = string.Empty;
     }
 }

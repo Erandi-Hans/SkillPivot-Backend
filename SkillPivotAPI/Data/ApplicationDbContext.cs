@@ -13,5 +13,7 @@ namespace SkillPivotAPI.Data
 
         
         public DbSet<Student> Students { get; set; }
+
+        public DbSet<JobApplication> JobApplications { get; set; }
     }
 }
