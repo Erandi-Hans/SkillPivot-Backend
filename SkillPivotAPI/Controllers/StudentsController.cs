@@ -2,6 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using SkillPivotAPI.Data;
 using SkillPivotAPI.Models;
+using Microsoft.AspNetCore.Hosting;
 
 namespace SkillPivotAPI.Controllers
 {
@@ -42,12 +43,18 @@ namespace SkillPivotAPI.Controllers
                 return Conflict(new { message = "A student profile already exists for this user." });
             }
 
-            // Initialize non-nullable fields with empty strings to prevent database null constraint errors
+            // Initialize fields to prevent null constraint errors
             student.University ??= "";
             student.Degree ??= "";
             student.GPA ??= "";
             student.Skills ??= "";
             student.Gender ??= "";
+            student.TargetRole ??= "";
+            student.Summary ??= "";
+            student.Experience ??= "";
+            student.Languages ??= "";
+            student.Projects ??= "[]";
+            student.Certifications ??= "[]";
             student.NicDocumentPath ??= "";
 
             _context.Students.Add(student);
@@ -75,7 +82,19 @@ namespace SkillPivotAPI.Controllers
             existingStudent.Skills = studentData.Skills ?? "";
             existingStudent.Gender = studentData.Gender ?? "";
 
-            // Keep existing path if a new one is not provided in the standard update
+            // New CV Related Fields
+            existingStudent.TargetRole = studentData.TargetRole ?? "";
+            existingStudent.Summary = studentData.Summary ?? "";
+            existingStudent.Experience = studentData.Experience ?? "";
+            existingStudent.Languages = studentData.Languages ?? "";
+
+            // JSON Data for Multiple Projects and Certificates
+            existingStudent.Projects = studentData.Projects ?? "[]";
+            existingStudent.Certifications = studentData.Certifications ?? "[]";
+
+            existingStudent.IsVerified = studentData.IsVerified;
+
+            // Keep existing path if a new one is not provided
             existingStudent.NicDocumentPath = string.IsNullOrEmpty(studentData.NicDocumentPath)
                 ? existingStudent.NicDocumentPath
                 : studentData.NicDocumentPath;
@@ -104,7 +123,7 @@ namespace SkillPivotAPI.Controllers
             var uploadsFolder = Path.Combine(_environment.WebRootPath, "uploads", "nic");
             if (!Directory.Exists(uploadsFolder)) Directory.CreateDirectory(uploadsFolder);
 
-            // Generate a unique filename to prevent overwriting
+            // Generate a unique filename
             var fileName = $"{userId}_NIC_{Guid.NewGuid()}{Path.GetExtension(file.FileName)}";
             var filePath = Path.Combine(uploadsFolder, fileName);
 
@@ -113,7 +132,7 @@ namespace SkillPivotAPI.Controllers
                 await file.CopyToAsync(stream);
             }
 
-            // Save the relative path in the database for future retrieval
+            // Save the relative path
             student.NicDocumentPath = $"/uploads/nic/{fileName}";
             await _context.SaveChangesAsync();
 

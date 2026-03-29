@@ -1193,6 +1193,30 @@
             "type": "string",
             "nullable": true
           },
+          "TargetRole": {
+            "type": "string",
+            "nullable": true
+          },
+          "Summary": {
+            "type": "string",
+            "nullable": true
+          },
+          "Experience": {
+            "type": "string",
+            "nullable": true
+          },
+          "Languages": {
+            "type": "string",
+            "nullable": true
+          },
+          "Projects": {
+            "type": "string",
+            "nullable": true
+          },
+          "Certifications": {
+            "type": "string",
+            "nullable": true
+          },
           "IsVerified": {
             "type": "boolean"
           },

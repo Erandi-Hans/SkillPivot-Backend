@@ -34,5 +34,7 @@ namespace SkillPivotAPI.Models
 
         // ProfilePicture property to match the database column
         public string? ProfilePicture { get; set; }
+
+        
     }
 }
